@@ -1,0 +1,58 @@
+import {Failure} from "../../../utils/abstracts";
+import {Right} from "../../../utils/fp/f_p";
+
+class RestResponseError {
+    constructor(
+        public statusCode: number,
+        public message: string,
+        public extra: any
+    ) {
+    }
+
+    toString() {
+        return `RestResponseError\n statusCode: ${this.statusCode}\n message: ${this.message}\n extra: ${this.extra}`;
+    }
+}
+
+export abstract class RestResponseFailure extends Failure {
+    constructor(
+        message: string,
+        public statusCode: number
+    ) {
+        super(message);
+    }
+}
+
+/*class ConnectionFailure extends RestResponseFailure {
+  constructor() {
+    super("Connection Failure");
+  }
+}
+
+class InvalidDataFailure extends RestResponseFailure {
+  constructor() {
+    super("Invalid Data Failure");
+  }
+}*/
+
+export class OtherRemoteRequestFailure extends RestResponseFailure {
+    constructor(
+        message: string,
+        statusCode: number
+    ) {
+        super(message, statusCode);
+    }
+
+    get messageLocaleKey(): string {
+        return this.message!;
+    }
+}
+
+export class RestResponse extends Right {
+    constructor(
+        public value: any,
+        public statusCode: number
+    ) {
+        super();
+    }
+}

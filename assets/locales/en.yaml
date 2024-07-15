@@ -1,0 +1,48 @@
+user:
+  rms:
+    sharePhoneNumber: Share Phone number
+    viewProducts: View Products
+    startShopping: Start Shopping
+    skip: Skip
+  vos:
+    name:
+      emptyFirstName: Name can only be a text. Please enter your first name as text.
+      emptyLastName: Name can only be a text. Please enter your father's name as text.
+      twoWordFirstName: Please enter your first name only
+      twoWordLastName: Please enter your father's name only
+      longName: Name can not be more than 30 characters long
+      ivdFirstName: Name can not contain emojis, numbers or special characters
+      ivdLastName: Name can not contain emojis, numbers or special characters
+    phoneNumber:
+      empty: Phone number can only be a text
+      invalid: Please enter a valid Ethiopian Phone number
+    password:
+      empty: Password can only be a text
+      invalid: |+
+        Invalid password
+  msg:
+    pmt:
+      enterFirstName: Please enter your first name
+      enterLastName: Please enter your first name
+      enterPhoneNumber: Please enter your phone number using the button below
+      enterPassword: |+
+        Please enter a password that you can use to login on the website
+    err:
+      manuallyEnteredPhone: Please use the button below to send me your phone number.
+      notYourNumber: Please share your phone number using the button below.
+    info:
+      registrationSync: Syncing with your account.
+      regSyncSuccess: Account sync complete.
+      registrationInfo: |+
+        Please register by providing your <b>name</b> and <b>phone number</b>.
+        
+        You can skip registration. 
+        
+        Be aware that you will be asked to <b>come back to the bot</b> and register when you attempt to purchase.
+      registrationSuccess: You have successfully registered.
+      viewAvailableProducts: View available products.
+      mainMenu: Use the button below to start shopping.
+
+
+
+
