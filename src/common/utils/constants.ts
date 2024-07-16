@@ -33,7 +33,6 @@ export const dependencyKeys = {
     fetchBundleOrProduct: "fetchBundleOrProduct",
     //scenes
     userRegistrationScene: "userRegistrationScene",
-    postScene: "postScene",
     //commands
     postCommand: "postCommand",
     //keyboards
@@ -42,12 +41,28 @@ export const dependencyKeys = {
     cancelPostKeyboard: "cancelPostKeyboard",
     //inlineKeyboards
     confirmPostInlineKeyboard: "confirmPostInlineKeyboard",
-    cancelPostInlineKeyboard: "cancelPostInlineKeyboard"
+    cancelPostInlineKeyboard: "cancelPostInlineKeyboard",
+    /**
+     * ------------------------- Order Module --------------------------
+     * */
+    //Datasource
+    orderDatasource: "orderDatasource",
+    orderRepo: "orderRepo",
+    //Repo
+    //Use
+    placeOrder: "placeOrder",
+    //scenes
+    orderScene: "orderScene",
+    //commands
+    //keyboards
+    skipOrderFieldKeyboard: "skipOrderFieldKeyboard",
+    cancelOrderKeyboard: "cancelOrderKeyboard",
+    //inlineKeyboards
 }
 
 export const sceneKeys = {
     userRegistration: "userRegistration",
-    post: "post",
+    order: "order"
 }
 
 export const CALLBACK_DATA_SEPARATOR = "|"

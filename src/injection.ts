@@ -4,6 +4,7 @@ import {injectLocalizationModule} from "./modules/localization/localization.inje
 import {injectMainStage} from "./common/presentation/stages/core_stage";
 import {injectCommonModule} from "./common/common.injection";
 import {injectUserModule} from "./modules/user/user.injection";
+import {injectOrderModule} from "./modules/order/order.injection";
 
 export const provider = DependencyProvider.getInstance;
 
@@ -11,6 +12,7 @@ export const injectDependencies = async () => {
     injectConfigModule()
     injectLocalizationModule()
     injectCommonModule()
+    injectOrderModule()
     injectUserModule()
     injectMainStage()
 }

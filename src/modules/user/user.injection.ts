@@ -8,8 +8,6 @@ import {injectUserRegistrationKeyboards} from "./presentation/interactives/keybo
 import {RegisterUser} from "./domain/use_cases/register_user";
 import {UpdateUserTelegramId} from "./domain/use_cases/update_user_telegram_id";
 import {FetchUserByPhoneNumber} from "./domain/use_cases/fetch_user_by_phone_number";
-import {ProductRemoteDatasource} from "./infrastructure/datasources/product_remote_datasource";
-import {ProductRepoImpl} from "./infrastructure/repos/product_repo_impl";
 import {FetchProductOrBundleById} from "./domain/use_cases/fetch_product_or_bundle_by_id";
 
 const injectPresentation = () => {
@@ -26,21 +24,9 @@ const injectInfrastructure = () => {
         )
     )
     provider.registerLazySingleton(
-        dependencyKeys.productDatasource,
-        () => new ProductRemoteDatasource(
-            provider.get(dependencyKeys.restDatasource)
-        )
-    )
-    provider.registerLazySingleton(
         dependencyKeys.userRepo,
         () => new UserRepoImpl(
             provider.get(dependencyKeys.userDatasource)
-        )
-    )
-    provider.registerLazySingleton(
-        dependencyKeys.productRepo,
-        () => new ProductRepoImpl(
-            provider.get(dependencyKeys.productDatasource)
         )
     )
 }

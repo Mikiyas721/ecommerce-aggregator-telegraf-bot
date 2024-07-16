@@ -1,3 +1,7 @@
+common:
+  rms:
+    cancel: Cancel
+    skip: Skip
 user:
   rms:
     sharePhoneNumber: Share Phone number
@@ -42,6 +46,39 @@ user:
       registrationSuccess: You have successfully registered.
       viewAvailableProducts: View available products.
       mainMenu: Use the button below to start shopping.
+
+order:
+  rms:
+  vos:
+    deliveryDate:
+      empty: Delivery Date can only be a text.
+      invalid: |+
+        Invalid delivery date.
+        
+        Please enter delivery date in the format dd/mm/yyyy of the gregorian calender.
+      passed: Delivery Date can only be ahead of today.
+    deliveryAddress:
+      empty: Delivery Address can only be a text.
+      short: Delivery Address can not be less than 2 characters long.
+    note:
+      empty: Note can only be a text.
+  msg:
+    pmt:
+      deliveryDate: |+
+        Please enter delivery date for your order.
+        
+        Use the gregorian calender in the format dd/mm/yyyy.
+      deliveryAddress: |+
+        Please enter delivery address for your order.
+
+        Please use a well known address.
+      note: |+
+        Please enter any additional note you want to add.
+        
+        You can skip using the button below.
+    err:
+    info:
+      orderSuccess: You have successfully placed your order.
 
 
 

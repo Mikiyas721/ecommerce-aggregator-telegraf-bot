@@ -7,7 +7,7 @@ export const injectMainStage = () => {
     provider.registerSingleton(dependencyKeys.mainStage, new Scenes.Stage(
         [
             provider.get<MyScene>(dependencyKeys.userRegistrationScene),
-            provider.get<MyScene>(dependencyKeys.postScene)
+            provider.get<MyScene>(dependencyKeys.orderScene)
         ]
     ))
 }
