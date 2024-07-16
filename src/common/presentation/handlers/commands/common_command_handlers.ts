@@ -11,10 +11,21 @@ export class CommonCommandHandlers {
         return fetchUserByTelegramIdResponse.fold(async l => {
             await ctx.replyWithHTML(l.messageLocaleKey)
         }, async r => {
+            const dataSplit: string[] | undefined = (ctx.message!.text!.split(" ")?.at(1) as string)
+                ?.split("-")
+            const productId = dataSplit?.at(1)
             if (r.value.length) {
+                if (productId) {
+                    return ctx.scene.enter(sceneKeys.order, {
+                        userId: r.value[0].id,
+                        productId
+                    })
+                }
                 return CommonHandlers.sendMainMenuMessage(ctx)
             } else {
-                return ctx.scene.enter(sceneKeys.userRegistration)
+                return ctx.scene.enter(sceneKeys.userRegistration, {
+                    productId
+                })
             }
         })
     }

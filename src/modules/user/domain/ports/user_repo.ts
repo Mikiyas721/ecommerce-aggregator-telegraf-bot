@@ -9,7 +9,7 @@ export interface UserRepo {
     fetchUserByPhone(phone: string)
         : Promise<Either<Failure, Success<User[]>>>
 
-    registerUser(user: User): Promise<Either<Failure, ValuelessSuccess>>
+    registerUser(user: User): Promise<Either<Failure, User>>
 
     updateUserTelegramId(id: string, telegramId: string): Promise<Either<Failure, User>>
 }

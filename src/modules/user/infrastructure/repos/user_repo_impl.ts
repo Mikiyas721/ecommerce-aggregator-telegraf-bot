@@ -4,6 +4,7 @@ import {Failure, Success, ValuelessSuccess} from "../../../../common/utils/abstr
 import {User} from "../../domain/entities/user";
 import {UserRemoteDatasource} from "../datasources/user_remote_datasource";
 import {UserDto} from "../dtos/user_dto";
+import {SimpleFailure} from "../../../../common/utils/either";
 
 export class UserRepoImpl implements UserRepo {
     constructor(private userRemoteDatasource: UserRemoteDatasource) {
@@ -48,7 +49,7 @@ export class UserRepoImpl implements UserRepo {
         );
     }
 
-    async registerUser(user: User): Promise<Either<Failure, ValuelessSuccess>> {
+    async registerUser(user: User): Promise<Either<Failure, User>> {
         const usersResponse = await this.userRemoteDatasource.restDatasource.post({
             url: `${this.userRemoteDatasource.myPath}`,
             data: UserDto.fromDomain(user).toJson()
@@ -56,7 +57,10 @@ export class UserRepoImpl implements UserRepo {
 
         return usersResponse.fold(
             l => Either.left(l),
-            _ => Either.right(new ValuelessSuccess())
+            r => UserDto.fromJson(r.value).toDomain().fold(
+                () => Either.left(new SimpleFailure("Unable to map dto to domain")),
+                s => Either.right(s)
+            )
         );
     }
 

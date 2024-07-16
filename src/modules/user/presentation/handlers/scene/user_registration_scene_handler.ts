@@ -2,7 +2,7 @@ import {TelegrafContext} from "../../../../../common/utils/telegraf_types/contex
 import {MyMarkup} from "../../../../../common/utils/telegraf_helper/my_markup";
 import {PhoneNumber} from "../../../domain/value_objects/phoneNumber";
 import {provider} from "../../../../../injection";
-import {dependencyKeys} from "../../../../../common/utils/constants";
+import {dependencyKeys, sceneKeys} from "../../../../../common/utils/constants";
 import {RegisterUser} from "../../../domain/use_cases/register_user";
 import {User} from "../../../domain/entities/user";
 import {CommonHandlers} from "../../../../../common/presentation/handlers/common_handlers";
@@ -71,7 +71,13 @@ export class UserRegistrationSceneHandlers {
                 )
             return registerUserResponse.fold(async l => {
                 await ctx.replyWithHTML(l.messageLocaleKey)
-            }, async _ => {
+            }, async r => {
+                if (ctx.scene.state.productId) {
+                    return ctx.scene.enter(sceneKeys.order, {
+                        userId: r.id,
+                        productId: ctx.scene.state.productId
+                    })
+                }
                 await ctx.replyWithHTML(ctx.i18n.t("user.msg.info.registrationSuccess"))
                 return CommonHandlers.sendMainMenuMessage(ctx)
             })
