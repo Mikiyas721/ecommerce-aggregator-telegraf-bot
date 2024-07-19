@@ -18,7 +18,7 @@ export class AxiosDatasource implements RestDatasource {
         });
         if (config.apiAccessToken) {
             this.axios.interceptors.request.use(function (request) {
-                request.headers['Authorization'] = `${config.apiAccessToken}`
+                request.headers['Authorization'] = `Bearer ${config.apiAccessToken}`
                 return request;
             }, function (error: any) {
                 return Promise.reject(error);

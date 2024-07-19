@@ -14,7 +14,6 @@ export const dependencyKeys = {
     startCommand: "startCommand",
     //keyboards
     startShoppingKeyboard: "startShoppingKeyboard",
-    mainMenuPreviousKeyboards: "mainMenuPreviousKeyboards",
     //inlineKeyboards
     /**
      * ------------------------- User Module --------------------------
@@ -34,10 +33,8 @@ export const dependencyKeys = {
     //scenes
     userRegistrationScene: "userRegistrationScene",
     //commands
-    postCommand: "postCommand",
     //keyboards
     sharePhoneNumberKeyboard: "sharePhoneNumberKeyboard",
-    skipUserRegistrationKeyboard: "skipUserRegistrationKeyboard",
     cancelPostKeyboard: "cancelPostKeyboard",
     //inlineKeyboards
     confirmPostInlineKeyboard: "confirmPostInlineKeyboard",

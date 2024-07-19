@@ -17,9 +17,7 @@ export const injectUserRegistrationScene = () => {
                     //UserRegistrationSceneHandlers.password,
                 ]
             },{
-                keyboards: [
-                    provider.get(dependencyKeys.skipUserRegistrationKeyboard)
-                ],
+                keyboards: [],
                 commands: [
                     provider.get(dependencyKeys.startCommand)
                 ]

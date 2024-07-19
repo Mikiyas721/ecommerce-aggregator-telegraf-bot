@@ -7,7 +7,7 @@ export class UserDto extends IdDto<User> {
         id: string | undefined,
         readonly firstName: string,
         readonly lastName: string,
-        readonly phone: string,
+        readonly phoneNumber: string,
         readonly telegramId: string
     ) {
         super(id);
@@ -18,7 +18,7 @@ export class UserDto extends IdDto<User> {
             this.id,
             this.firstName,
             this.lastName,
-            this.phone,
+            this.phoneNumber,
             this.telegramId,
         );
     }
@@ -28,7 +28,7 @@ export class UserDto extends IdDto<User> {
             json.id,
             json.firstName,
             json.lastName,
-            json.phone,
+            json.phoneNumber,
             json.telegramId
         )
     }
@@ -38,7 +38,7 @@ export class UserDto extends IdDto<User> {
             user.id,
             user.firstName.value,
             user.lastName.value,
-            user.phone.with09Format,
+            user.phoneNumber.temp,
             user.telegramId
         )
     }

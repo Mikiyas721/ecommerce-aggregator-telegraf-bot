@@ -8,7 +8,7 @@ export class User extends Entity {
         id: string | undefined,
         readonly firstName: Name,
         readonly lastName: Name,
-        readonly phone: PhoneNumber,
+        readonly phoneNumber: PhoneNumber,
         readonly telegramId: string
     ) {
         super(id);
@@ -18,7 +18,7 @@ export class User extends Entity {
         id: string | undefined,
         firstName: string,
         lastName: string,
-        phone: string,
+        phoneNumber: string,
         telegramId: string
     ): Option<User> {
         if (!id) return Option.none()
@@ -29,7 +29,7 @@ export class User extends Entity {
         const lastNameObject = Name.createForLastName(lastName)
         if (lastNameObject.isLeft) return Option.none()
 
-        const phoneNumberObject = PhoneNumber.createForEthiopian(phone)
+        const phoneNumberObject = PhoneNumber.createForEthiopian(phoneNumber)
         if (phoneNumberObject.isLeft) return Option.none()
 
         return Option.some(new User(
@@ -44,12 +44,12 @@ export class User extends Entity {
     static createFromValidated(
         firstName: string,
         lastName: string,
-        phone: string,
+        phoneNumber: string,
         telegramId: string
     ): User {
         const firstNameObject = Name.createForFirstName(firstName)
         const lastNameObject = Name.createForLastName(lastName)
-        const phoneNumberObject = PhoneNumber.createForEthiopian(phone)
+        const phoneNumberObject = PhoneNumber.createForEthiopian(phoneNumber)
 
         return new User(
             undefined,

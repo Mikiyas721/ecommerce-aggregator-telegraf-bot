@@ -21,7 +21,7 @@ export class OrderSceneHandlers {
         return DeliveryDate.createForGC(ctx.message?.text).fold(async l => {
             await ctx.replyWithHTML(ctx.i18n.t(l.messageLocaleKey))
         }, async r => {
-            ctx.scene.state.deliveryDate = r.isoString
+            ctx.scene.state.deliveryDate = r.value
 
             await ctx.replyWithHTML(ctx.i18n.t("order.msg.pmt.deliveryAddress"))
             return ctx.wizard.selectStep(1)
@@ -50,7 +50,7 @@ export class OrderSceneHandlers {
             await ctx.replyWithHTML(ctx.i18n.t(l.messageLocaleKey))
         }, async r => {
             ctx.scene.state.note = r.value
-            
+
             return OrderHandlers.placeOrder(ctx)
         })
     }

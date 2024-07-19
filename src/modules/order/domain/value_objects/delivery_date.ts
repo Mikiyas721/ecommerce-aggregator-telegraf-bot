@@ -48,8 +48,21 @@ export class DeliveryDate extends ValueObject {
         return Either.right(new DeliveryDate(deliveryDate))
     }
 
+    static createForISOString(deliveryDate: string | undefined): Either<DeliveryDateFailure, DeliveryDate> {
+        if (deliveryDate == undefined || deliveryDate == "")
+            return Either.left(new EmptyDeliveryDateFailure())
+
+        const date = new Date(Date.parse(deliveryDate))
+
+        return Either.right(new DeliveryDate(`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`))
+    }
+
     get isoString() {
-        const split = this.value.split('/')
+        return DeliveryDate.getISOFromSlashed(this.value)
+    }
+
+    static getISOFromSlashed(slashedDate: string) {
+        const split = slashedDate.split('/')
         const year = parseInt(split[2])
         const month = parseInt(split[1])
         const day = parseInt(split[0])

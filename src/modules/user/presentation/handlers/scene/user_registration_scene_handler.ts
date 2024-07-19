@@ -11,12 +11,10 @@ import {Name} from "../../../domain/value_objects/name";
 
 export class UserRegistrationSceneHandlers {
     static async enter(ctx: TelegrafContext) {
-        await ctx.replyWithHTML(ctx.i18n.t("user.msg.info.registrationInfo"))
         await ctx.replyWithHTML(
             ctx.i18n.t("user.msg.pmt.enterPhoneNumber"),
             MyMarkup.getKeyboardMarkup(ctx, [
-                provider.get(dependencyKeys.sharePhoneNumberKeyboard),
-                provider.get(dependencyKeys.skipUserRegistrationKeyboard)
+                provider.get(dependencyKeys.sharePhoneNumberKeyboard)
             ], {countInRow: 1})
         )
     }

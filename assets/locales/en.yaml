@@ -27,7 +27,7 @@ user:
   msg:
     pmt:
       enterFirstName: Please enter your first name
-      enterLastName: Please enter your first name
+      enterLastName: Please enter your last name
       enterPhoneNumber: Please enter your phone number using the button below
       enterPassword: |+
         Please enter a password that you can use to login on the website

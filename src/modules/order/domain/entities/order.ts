@@ -26,7 +26,7 @@ export class Order extends Entity {
     ): Option<Order> {
         if (!id) return Option.none()
 
-        const deliveryDateObject = DeliveryDate.createForGC(deliveryDate)
+        const deliveryDateObject = DeliveryDate.createForISOString(deliveryDate)
         if (deliveryDateObject.isLeft) return Option.none()
 
         const deliveryAddressObject = DeliveryAddress.create(deliveryAddress)

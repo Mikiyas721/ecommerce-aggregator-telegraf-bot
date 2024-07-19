@@ -1,6 +1,7 @@
 import {IdDto} from "../../../../common/infrastructure/datasources/dto/dto";
 import {Option} from "../../../../common/utils/fp/f_p";
 import {Order} from "../../domain/entities/order";
+import {DeliveryDate} from "../../domain/value_objects/delivery_date";
 
 export class OrderDto extends IdDto<Order> {
     constructor(

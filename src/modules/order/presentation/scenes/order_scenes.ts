@@ -16,9 +16,14 @@ export const injectOrderScenes = () => {
                     OrderSceneHandlers.note,
                 ]
             }, {
-                keyboards: [],
+                keyboards: [
+                    provider.get(dependencyKeys.cancelOrderKeyboard),
+                    provider.get(dependencyKeys.skipOrderFieldKeyboard)
+                ],
                 inlineKeyboards: [],
-                commands: []
+                commands: [
+                    provider.get(dependencyKeys.startCommand)
+                ]
             }
         )
     )

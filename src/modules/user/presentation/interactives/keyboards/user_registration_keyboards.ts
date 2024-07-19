@@ -12,11 +12,4 @@ export const injectUserRegistrationKeyboards = () => {
             }
         )
     )
-    provider.registerLazySingleton(
-        dependencyKeys.skipUserRegistrationKeyboard,
-        () => new MyLabelKeyboard(
-            "user.rms.skip",
-            UserRegistrationKeyboardHandlers.skip
-        )
-    )
 }

@@ -55,4 +55,10 @@ export class PhoneNumber extends ValueObject {
     get core() {
         return this.value.substring(this.value.length - 9)
     }
+
+    /**
+     * To Pass loopback default validation*/
+    get temp() {
+        return `0+251${this.value.substring(this.value.length - 9)}`
+    }
 }

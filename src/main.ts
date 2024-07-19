@@ -21,12 +21,10 @@ async function main() {
             ],
             interactors: {
                 keyboards: [
-                    provider.get(dependencyKeys.mainMenuPreviousKeyboards),
                 ],
                 inlineKeyboards: [],
                 commands: [
                     provider.get(dependencyKeys.startCommand),
-                    provider.get(dependencyKeys.postCommand)
                 ]
             },
             translatorMiddleware: i18n.middleware(),
