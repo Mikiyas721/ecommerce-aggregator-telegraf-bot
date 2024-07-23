@@ -12,6 +12,7 @@ export const dependencyKeys = {
     //scenes
     //commands
     startCommand: "startCommand",
+    feedbackCommand: "feedbackCommand",
     //keyboards
     startShoppingKeyboard: "startShoppingKeyboard",
     //inlineKeyboards
@@ -20,25 +21,33 @@ export const dependencyKeys = {
      * */
     //Datasource
     userDatasource: "userDatasource",
+    feedbackDatasource: "feedbackDatasource",
     productDatasource: "productDatasource",
     //Repo
     userRepo: "userRepo",
+    feedbackRepo: "feedbackRepo",
     productRepo: "productRepo",
     //Use
     fetchUserByTelegramId: "fetchUserByTelegramId",
     fetchUserByPhone: "fetchUserByPhone",
     registerUser: "registerUser",
     updateUserTelegramId: "updateUserTelegramId",
+    addFeedback: "addFeedback",
     fetchBundleOrProduct: "fetchBundleOrProduct",
     //scenes
     userRegistrationScene: "userRegistrationScene",
+    feedbackScene: "feedbackScene",
     //commands
     //keyboards
     sharePhoneNumberKeyboard: "sharePhoneNumberKeyboard",
     cancelPostKeyboard: "cancelPostKeyboard",
+    cancelFeedbackKeyboard: "cancelFeedbackKeyboard",
     //inlineKeyboards
     confirmPostInlineKeyboard: "confirmPostInlineKeyboard",
     cancelPostInlineKeyboard: "cancelPostInlineKeyboard",
+    confirmFeedbackInlineKeyboard: "confirmFeedbackInlineKeyboard",
+    cancelFeedbackInlineKeyboard: "cancelFeedbackInlineKeyboard",
+    editFeedbackInlineKeyboard: "editFeedbackInlineKeyboard",
     /**
      * ------------------------- Order Module --------------------------
      * */
@@ -59,6 +68,7 @@ export const dependencyKeys = {
 
 export const sceneKeys = {
     userRegistration: "userRegistration",
+    feedback: "feedback",
     order: "order"
 }
 

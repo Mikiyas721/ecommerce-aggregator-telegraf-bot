@@ -29,4 +29,22 @@ export class CommonCommandHandlers {
             }
         })
     }
+
+    static async feedback(ctx: TelegrafContext) {
+        const fetchUserByTelegramIdResponse = await provider
+            .get<FetchUserByTelegramId>(dependencyKeys.fetchUserByTelegramId).execute(ctx.from!.id.toString())
+        return fetchUserByTelegramIdResponse.fold(async l => {
+            await ctx.replyWithHTML(l.messageLocaleKey)
+        }, async r => {
+            if (r.value.length) {
+                return ctx.scene.enter(sceneKeys.feedback, {
+                    userId: r.value[0].id
+                })
+            } else {
+                return ctx.scene.enter(sceneKeys.userRegistration, {
+                    productId: undefined
+                })
+            }
+        })
+    }
 }

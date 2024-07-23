@@ -2,6 +2,12 @@ common:
   rms:
     cancel: Cancel
     skip: Skip
+    confirm: Confirm
+    edit: Edit
+  msg:
+    err:
+      onlyBtnAbove: Please only use buttons above.
+      onlyBtnBelow: Please only use buttons below.
 user:
   rms:
     sharePhoneNumber: Share Phone number
@@ -24,6 +30,9 @@ user:
       empty: Password can only be a text
       invalid: |+
         Invalid password
+    feedbackBody:
+      empty: Feedback can only be a text.
+      short: Feedback can not be less than 10 characters long.
   msg:
     pmt:
       enterFirstName: Please enter your first name
@@ -31,6 +40,8 @@ user:
       enterPhoneNumber: Please enter your phone number using the button below
       enterPassword: |+
         Please enter a password that you can use to login on the website
+      feedback: Please enter your insight on our platform.
+      feedbackVer: Please verify your feedback.
     err:
       manuallyEnteredPhone: Please use the button below to send me your phone number.
       notYourNumber: Please share your phone number using the button below.
@@ -46,6 +57,11 @@ user:
       registrationSuccess: You have successfully registered.
       viewAvailableProducts: View available products.
       mainMenu: Use the button below to start shopping.
+      feedbackSummary: |+
+        <b>Your Feedback</b>
+        
+        ${feedback}
+      addFeedbackSuccess: You have successfully added your feedback.
 
 order:
   rms:

@@ -9,10 +9,19 @@ import {RegisterUser} from "./domain/use_cases/register_user";
 import {UpdateUserTelegramId} from "./domain/use_cases/update_user_telegram_id";
 import {FetchUserByPhoneNumber} from "./domain/use_cases/fetch_user_by_phone_number";
 import {FetchProductOrBundleById} from "./domain/use_cases/fetch_product_or_bundle_by_id";
+import {FeedbackRemoteDatasource} from "./infrastructure/datasources/feedback_remote_datasource";
+import {FeedbackRepoImpl} from "./infrastructure/repos/feedback_repo_impl";
+import {AddFeedback} from "./domain/use_cases/add_feedback";
+import {injectFeedbackScene} from "./presentation/scenes/feedback_scene";
+import {injectFeedbackKeyboard} from "./presentation/interactives/keyboards/feedback_keyboards";
+import {injectFeedbackInlineKeyboards} from "./presentation/interactives/inline_keyboards/feedback_inline_keyboards";
 
 const injectPresentation = () => {
+    injectFeedbackKeyboard()
+    injectFeedbackInlineKeyboards()
     injectUserRegistrationKeyboards()
     injectUserRegistrationScene()
+    injectFeedbackScene()
 }
 
 
@@ -24,9 +33,21 @@ const injectInfrastructure = () => {
         )
     )
     provider.registerLazySingleton(
+        dependencyKeys.feedbackDatasource,
+        () => new FeedbackRemoteDatasource(
+            provider.get(dependencyKeys.restDatasource)
+        )
+    )
+    provider.registerLazySingleton(
         dependencyKeys.userRepo,
         () => new UserRepoImpl(
             provider.get(dependencyKeys.userDatasource)
+        )
+    )
+    provider.registerLazySingleton(
+        dependencyKeys.feedbackRepo,
+        () => new FeedbackRepoImpl(
+            provider.get(dependencyKeys.feedbackDatasource)
         )
     )
 }
@@ -54,6 +75,12 @@ const injectDomain = () => {
         dependencyKeys.updateUserTelegramId,
         () => new UpdateUserTelegramId(
             provider.get(dependencyKeys.userRepo)
+        )
+    )
+    provider.registerLazySingleton(
+        dependencyKeys.addFeedback,
+        () => new AddFeedback(
+            provider.get(dependencyKeys.feedbackRepo)
         )
     )
     provider.registerLazySingleton(

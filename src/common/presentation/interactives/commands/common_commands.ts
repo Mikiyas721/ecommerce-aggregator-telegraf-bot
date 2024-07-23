@@ -11,4 +11,11 @@ export const injectCommonCommands = () => {
             CommonCommandHandlers.start
         )
     )
+    provider.registerLazySingleton(
+        dependencyKeys.feedbackCommand,
+        () => new MyCommand(
+            "feedback",
+            CommonCommandHandlers.feedback
+        )
+    )
 }

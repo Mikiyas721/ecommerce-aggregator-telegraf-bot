@@ -20,11 +20,11 @@ async function main() {
                 provider.get<Scenes.Stage<any>>(dependencyKeys.mainStage).middleware(),
             ],
             interactors: {
-                keyboards: [
-                ],
+                keyboards: [],
                 inlineKeyboards: [],
                 commands: [
                     provider.get(dependencyKeys.startCommand),
+                    provider.get(dependencyKeys.feedbackCommand)
                 ]
             },
             translatorMiddleware: i18n.middleware(),

@@ -1,13 +1,15 @@
 import {Failure, ValueObject} from "../../../../common/utils/abstracts";
 import {Either} from "../../../../common/utils/fp/f_p";
 
-class EmptyPasswordFailure extends Failure {
+export abstract class PasswordFailure extends Failure{}
+
+class EmptyPasswordFailure extends PasswordFailure {
     get messageLocaleKey(): string {
         return "user.vos.password.empty";
     }
 }
 
-class InvalidPasswordFailure extends Failure {
+class InvalidPasswordFailure extends PasswordFailure {
     get messageLocaleKey(): string {
         return "user.vos.password.invalid";
     }
@@ -20,7 +22,7 @@ export class Password extends ValueObject<string> {
         super(value);
     }
 
-    static create(password: string | undefined): Either<Failure, Password> {
+    static create(password: string | undefined): Either<PasswordFailure, Password> {
         if (password == undefined) return Either.left(new EmptyPasswordFailure())
         if (passwordRegExp.test(password)) return Either.left(new InvalidPasswordFailure())
         return Either.right(new Password(password))
