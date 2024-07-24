@@ -56,7 +56,7 @@ user:
         Be aware that you will be asked to <b>come back to the bot</b> and register when you attempt to purchase.
       registrationSuccess: You have successfully registered.
       viewAvailableProducts: View available products.
-      mainMenu: Use the button below to start shopping.
+      mainMenu: Main Menu.
       feedbackSummary: |+
         <b>Your Feedback</b>
         
