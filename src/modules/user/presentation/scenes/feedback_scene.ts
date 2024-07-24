@@ -19,7 +19,11 @@ export const injectFeedbackScene = () => {
                 keyboards: [
                     provider.get(dependencyKeys.cancelFeedbackKeyboard)
                 ],
-                inlineKeyboards: []
+                inlineKeyboards: [
+                    provider.get(dependencyKeys.cancelFeedbackInlineKeyboard),
+                    provider.get(dependencyKeys.confirmFeedbackInlineKeyboard),
+                    provider.get(dependencyKeys.editFeedbackInlineKeyboard)
+                ]
             }
         ))
 }
