@@ -3,7 +3,7 @@ import {CommonHandlers} from "../../../../../common/presentation/handlers/common
 import {FeedbackHandlers} from "../feedback_handlers";
 import {provider} from "../../../../../injection";
 import {AddFeedback} from "../../../domain/use_cases/add_feedback";
-import {dependencyKeys} from "../../../../../common/utils/constants";
+import {dependencyKeys, sceneKeys} from "../../../../../common/utils/constants";
 import {Feedback} from "../../../domain/entities/feedback";
 
 export class FeedbackInlineKeyboardHandlers {
@@ -16,13 +16,13 @@ export class FeedbackInlineKeyboardHandlers {
         }, async _ => {
             await ctx.replyWithHTML(ctx.i18n.t("user.msg.info.addFeedbackSuccess"))
             await ctx.deleteMessage()
-            return CommonHandlers.sendMainMenuMessage(ctx)
+            return ctx.scene.enter(sceneKeys.mainMenu)
         })
     }
 
     static async cancel(ctx: TelegrafContext) {
         await ctx.deleteMessage()
-        return CommonHandlers.sendMainMenuMessage(ctx)
+        return ctx.scene.enter(sceneKeys.mainMenu)
     }
 
     static async edit(ctx: TelegrafContext) {

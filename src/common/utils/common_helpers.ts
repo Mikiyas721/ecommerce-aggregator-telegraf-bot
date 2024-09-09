@@ -3,6 +3,10 @@ import {TelegrafContext} from "./telegraf_types/context_types";
 import {provider} from "../../injection";
 import {Config} from "../../config/config";
 import {dependencyKeys} from "./constants";
+import {Either} from "./fp/f_p";
+import {Failure} from "./abstracts";
+import {MyResult} from "./either";
+import {FetchUserByTelegramId} from "../../modules/user/domain/use_cases/fetch_user_by_telegram_id";
 
 export const isInlineButtonRequest = (ctx: TelegrafContext) => {
     return ctx?.update?.callback_query != undefined
@@ -63,4 +67,65 @@ export const undefinedIndices = (myList: any[]) => {
         }
     }
     return indices
+}
+
+export const sendErrorMessage = async (ctx: TelegrafContext, content: {
+    message: string,
+    actionBeforeMessage?: (ctx: TelegrafContext) => any,
+    actionAfterMessage?: (ctx: TelegrafContext) => any,
+}) => {
+    if (content.actionBeforeMessage) await content.actionBeforeMessage(ctx)
+
+    await ctx.replyWithHTML(content.message)
+
+    if (content.actionAfterMessage) await content.actionAfterMessage(ctx)
+}
+
+export const sendUseOnlyButtonsAboveErrorMsg = async (ctx: TelegrafContext, actions: {
+    actionBeforeMessage?: (ctx: TelegrafContext) => any,
+    actionAfterMessage?: (ctx: TelegrafContext) => any,
+} = {}) => {
+    return sendErrorMessage(ctx, {
+        message: ctx.i18n.t("common.msg.err.onlyBtnAbove"),
+        actionBeforeMessage: actions.actionBeforeMessage,
+        actionAfterMessage: actions.actionAfterMessage
+    })
+}
+
+export const sendUseOnlyButtonsBelowErrorMsg = async (ctx: TelegrafContext, actions: {
+    actionBeforeMessage?: (ctx: TelegrafContext) => any,
+    actionAfterMessage?: (ctx: TelegrafContext) => any,
+} = {}) => {
+    return sendErrorMessage(ctx, {
+        message: ctx.i18n.t("common.msg.err.onlyBtnBelow"),
+        actionBeforeMessage: actions.actionBeforeMessage,
+        actionAfterMessage: actions.actionAfterMessage
+    })
+}
+
+interface UserInfo {
+    userId: string,
+}
+
+export const getUserInfoFromCacheOrRemote = async (ctx: TelegrafContext): Promise<Either<Failure, MyResult<UserInfo>>> => {
+    const {userId} = ctx.session
+    if (userId != undefined) {
+        return Either.right(new MyResult({
+            userId
+        }))
+    }
+    const fetchUserInfoByTelegramIdResponse = await provider.get<FetchUserByTelegramId>(dependencyKeys.fetchUserByTelegramId)
+        .execute(ctx.from!.id.toString())
+    return fetchUserInfoByTelegramIdResponse.fold(
+        l => Either.left(l),
+        r => {
+            const userInfo = {
+                userId: r.value[0].id!,
+            }
+
+            ctx.session.userId = userInfo.userId
+
+            return Either.right(new MyResult(userInfo))
+        }
+    )
 }

@@ -77,7 +77,7 @@ export class UserRegistrationSceneHandlers {
                     })
                 }
                 await ctx.replyWithHTML(ctx.i18n.t("user.msg.info.registrationSuccess"))
-                return CommonHandlers.sendMainMenuMessage(ctx)
+                return ctx.scene.ener(sceneKeys.mainMenu)
             })
         })
     }

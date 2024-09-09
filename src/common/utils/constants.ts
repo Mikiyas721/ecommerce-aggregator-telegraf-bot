@@ -23,10 +23,12 @@ export const dependencyKeys = {
     userDatasource: "userDatasource",
     feedbackDatasource: "feedbackDatasource",
     productDatasource: "productDatasource",
+    invitationDatasource: "invitationDatasource",
     //Repo
     userRepo: "userRepo",
     feedbackRepo: "feedbackRepo",
     productRepo: "productRepo",
+    invitationRepo: "invitationRepo",
     //Use
     fetchUserByTelegramId: "fetchUserByTelegramId",
     fetchUserByPhone: "fetchUserByPhone",
@@ -34,6 +36,7 @@ export const dependencyKeys = {
     updateUserTelegramId: "updateUserTelegramId",
     addFeedback: "addFeedback",
     fetchBundleOrProduct: "fetchBundleOrProduct",
+    createInvitation: "createInvitation",
     //scenes
     userRegistrationScene: "userRegistrationScene",
     feedbackScene: "feedbackScene",
@@ -64,12 +67,22 @@ export const dependencyKeys = {
     skipOrderFieldKeyboard: "skipOrderFieldKeyboard",
     cancelOrderKeyboard: "cancelOrderKeyboard",
     //inlineKeyboards
+    /**
+     * ------------------------ Main Menu Module ------------------------
+     * */
+    //scenes
+    mainMenuScene: "mainMenuScene",
+    //keyboards
+    inviteKeyboard: "inviteKeyboard",
+    myWalletKeyboard: "myWalletKeyboard",
+    myOrdersKeyboard: "myOrdersKeyboard"
 }
 
 export const sceneKeys = {
     userRegistration: "userRegistration",
     feedback: "feedback",
-    order: "order"
+    order: "order",
+    mainMenu: "mainMenu"
 }
 
 export const CALLBACK_DATA_SEPARATOR = "|"

@@ -15,6 +15,9 @@ import {AddFeedback} from "./domain/use_cases/add_feedback";
 import {injectFeedbackScene} from "./presentation/scenes/feedback_scene";
 import {injectFeedbackKeyboard} from "./presentation/interactives/keyboards/feedback_keyboards";
 import {injectFeedbackInlineKeyboards} from "./presentation/interactives/inline_keyboards/feedback_inline_keyboards";
+import {CreateInvitation} from "./domain/use_cases/create_invitation";
+import {InvitationRemoteDatasource} from "./infrastructure/datasources/invitation_remote_datasource";
+import {InvitationRepoImpl} from "./infrastructure/repos/invitation_repo_impl";
 
 const injectPresentation = () => {
     injectFeedbackKeyboard()
@@ -39,6 +42,12 @@ const injectInfrastructure = () => {
         )
     )
     provider.registerLazySingleton(
+        dependencyKeys.invitationDatasource,
+        () => new InvitationRemoteDatasource(
+            provider.get(dependencyKeys.restDatasource)
+        )
+    )
+    provider.registerLazySingleton(
         dependencyKeys.userRepo,
         () => new UserRepoImpl(
             provider.get(dependencyKeys.userDatasource)
@@ -48,6 +57,12 @@ const injectInfrastructure = () => {
         dependencyKeys.feedbackRepo,
         () => new FeedbackRepoImpl(
             provider.get(dependencyKeys.feedbackDatasource)
+        )
+    )
+    provider.registerLazySingleton(
+        dependencyKeys.invitationRepo,
+        () => new InvitationRepoImpl(
+            provider.get(dependencyKeys.invitationDatasource)
         )
     )
 }
@@ -87,6 +102,12 @@ const injectDomain = () => {
         dependencyKeys.fetchBundleOrProduct,
         () => new FetchProductOrBundleById(
             provider.get(dependencyKeys.productRepo)
+        )
+    )
+    provider.registerLazySingleton(
+        dependencyKeys.createInvitation,
+        () => new CreateInvitation(
+            provider.get(dependencyKeys.invitationRepo)
         )
     )
 }

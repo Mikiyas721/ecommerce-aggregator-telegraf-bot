@@ -1,7 +1,6 @@
 import {provider} from "../../../../../injection";
 import {dependencyKeys} from "../../../../../common/utils/constants";
-import {MyExtraFunctionKeyboard, MyLabelKeyboard} from "../../../../../common/utils/telegraf_helper/my_keyboard";
-import {UserRegistrationKeyboardHandlers} from "../../handlers/keyboard/user_registration_keyboard_handlers";
+import {MyExtraFunctionKeyboard} from "../../../../../common/utils/telegraf_helper/my_keyboard";
 
 export const injectUserRegistrationKeyboards = () => {
     provider.registerLazySingleton(

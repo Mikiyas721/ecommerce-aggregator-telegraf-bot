@@ -8,6 +8,20 @@ common:
     err:
       onlyBtnAbove: Please only use buttons above.
       onlyBtnBelow: Please only use buttons below.
+
+mainMenu:
+  rms:
+    invite: Invite
+    myWallet: My Wallet
+    myOrders: My Orders
+  msg:
+    info:
+      invitationMsg: |+
+        Invite and earn with the following link.
+        
+        `${botLink}?start=invite-${telegramId}`
+      mainMenuInit: Main Menu
+
 user:
   rms:
     sharePhoneNumber: Share Phone number
@@ -62,6 +76,7 @@ user:
         
         ${feedback}
       addFeedbackSuccess: You have successfully added your feedback.
+      invitationCreated: Invitation created.
 
 order:
   rms:
@@ -95,7 +110,3 @@ order:
     err:
     info:
       orderSuccess: You have successfully placed your order.
-
-
-
-
