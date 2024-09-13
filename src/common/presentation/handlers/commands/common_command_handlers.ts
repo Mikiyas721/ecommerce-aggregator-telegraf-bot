@@ -63,7 +63,8 @@ export class CommonCommandHandlers {
         if (action && id) {
             if (action == "order") {
                 return ctx.scene.enter(sceneKeys.order, {
-                    productId: id
+                    productId: id,
+                    userId: ctx.session.userId
                 })
             } else if (action == "invite" && userIsNew) {
                 const fetchUserByTelegramIdResponse = await provider.get<FetchUserByTelegramId>(dependencyKeys.fetchUserByTelegramId)
