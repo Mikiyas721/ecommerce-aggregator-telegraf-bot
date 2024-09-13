@@ -5,6 +5,7 @@ import {FetchUserByTelegramId} from "../../../../modules/user/domain/use_cases/f
 import {CommonHandlers} from "../common_handlers";
 import {CreateInvitation} from "../../../../modules/user/domain/use_cases/create_invitation";
 import {Invitation} from "../../../../modules/user/domain/entities/invitation";
+import {isChannelMember} from "../../../../modules/user/util/user_helpers";
 
 export class CommonCommandHandlers {
     static async start(ctx: TelegrafContext) {
@@ -60,12 +61,18 @@ export class CommonCommandHandlers {
                 })
             } else if (action == "invite" && userIsNew) {
                 const fetchUserByTelegramIdResponse = await provider.get<FetchUserByTelegramId>(dependencyKeys.fetchUserByTelegramId)
-                    .execute(id, false)
+                    .execute(id, true)
                 await fetchUserByTelegramIdResponse.fold(async l => {
                     await ctx.replyWithHTML(ctx.i18n.t(l.messageLocaleKey))
                 }, async r => {
                     const createInvitationResponse = await provider.get<CreateInvitation>(dependencyKeys.createInvitation)
-                        .execute(Invitation.create(undefined, r.value[0].id!, ctx.session.userId))
+                        .execute(Invitation.create(
+                            undefined,
+                            r.value[0].id!,
+                            ctx.session.userId,
+                            undefined,
+                            await isChannelMember(ctx)
+                        ))
                     await createInvitationResponse.fold(async l => {
                         await ctx.replyWithHTML(ctx.i18n.t(l.messageLocaleKey))
                     }, async _ => {

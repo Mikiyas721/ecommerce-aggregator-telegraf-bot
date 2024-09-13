@@ -1,20 +1,23 @@
 import {TelegrafContext} from "../../../../../common/utils/telegraf_types/context_types";
-import {dependencyKeys} from "../../../../../common/utils/constants";
+import {dependencyKeys, sceneKeys} from "../../../../../common/utils/constants";
 import {provider} from "../../../../../injection";
 import {Config} from "../../../../../config/config";
 
 export class MainMenuKeyboardHandlers {
     static async invite(ctx: TelegrafContext) {
         const config = provider.get<Config>(dependencyKeys.config)
-        return ctx.replyWithMarkdown(ctx.i18n.t("user.msg.info.invitationMsg", {
+        return ctx.replyWithHTML(ctx.i18n.t("mainMenu.msg.info.invitationMsg", {
             botLink: config.botLink,
             telegramId: ctx.from!.id,
+            channelLink: config.channelLink,
         }))
     }
 
-    static async myWallet(_: TelegrafContext) {
+    static async myWallet(ctx: TelegrafContext) {
+        return ctx.scene.enter(sceneKeys.myWallet)
     }
 
-    static async myOrders(_: TelegrafContext) {
+    static async myOrders(ctx: TelegrafContext) {
+        return ctx.replyWithHTML("Coming Soon")
     }
 }

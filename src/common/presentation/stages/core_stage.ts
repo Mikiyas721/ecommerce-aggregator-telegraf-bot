@@ -10,6 +10,7 @@ export const injectMainStage = () => {
             provider.get<MyScene>(dependencyKeys.orderScene),
             provider.get<MyScene>(dependencyKeys.feedbackScene),
             provider.get<MyScene>(dependencyKeys.mainMenuScene),
+            provider.get<MyScene>(dependencyKeys.myWalletScene),
         ]
     ))
 }

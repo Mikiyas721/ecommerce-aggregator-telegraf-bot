@@ -4,6 +4,7 @@ common:
     skip: Skip
     confirm: Confirm
     edit: Edit
+    back: Back
   msg:
     err:
       onlyBtnAbove: Please only use buttons above.
@@ -19,7 +20,12 @@ mainMenu:
       invitationMsg: |+
         Invite and earn with the following link.
         
-        `${botLink}?start=invite-${telegramId}`
+        ${botLink}?start=invite-${telegramId}
+        
+        👉 <b>1 ETB</b> 
+          for one successful subscription on the <a href="${channelLink}">channel</a> and registration on the <a href="${botLink}">bot</a>.
+        👉 <b>0.5 ETB</b> 
+          for one successful registration on the <a href="${botLink}">bot</a>.
       mainMenuInit: Main Menu
 
 user:
@@ -28,6 +34,7 @@ user:
     viewProducts: View Products
     startShopping: Start Shopping
     skip: Skip
+    withdraw: Withdraw
   vos:
     name:
       emptyFirstName: Name can only be a text. Please enter your first name as text.
@@ -77,6 +84,15 @@ user:
         ${feedback}
       addFeedbackSuccess: You have successfully added your feedback.
       invitationCreated: Invitation created.
+      userWalletSummary: |+
+        💰 <b>Balance</b> : ${totalBalance} ETB        
+        
+        📥 <b>Earnings</b>: ${totalEarning}
+        
+        📤 <b>Withdrawn</b>: ${totalWithdraw}
+      insufficientBalance: Insufficient Balance. You balance needs to be at least 5 ETB for withdrawal.
+      processingTopUp: Processing your payment, please wait.
+      withdrawSuccess: Top up successful
 
 order:
   rms:

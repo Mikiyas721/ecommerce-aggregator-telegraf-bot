@@ -20,7 +20,9 @@ async function main() {
                 provider.get<Scenes.Stage<any>>(dependencyKeys.mainStage).middleware(),
             ],
             interactors: {
-                keyboards: [],
+                keyboards: [
+                    provider.get(dependencyKeys.botToScenesKeyboard)
+                ],
                 inlineKeyboards: [],
                 commands: [
                     provider.get(dependencyKeys.startCommand),

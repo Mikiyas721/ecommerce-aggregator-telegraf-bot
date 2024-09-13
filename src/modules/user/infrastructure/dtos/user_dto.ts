@@ -38,7 +38,7 @@ export class UserDto extends IdDto<User> {
             user.id,
             user.firstName.value,
             user.lastName.value,
-            user.phoneNumber.temp,
+            user.phoneNumber.withCountryCode,
             user.telegramId
         )
     }

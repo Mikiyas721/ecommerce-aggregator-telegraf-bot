@@ -14,6 +14,8 @@ export class Config {
         readonly logInvoked: boolean,
         readonly redisUrl: string | undefined,
         readonly testEnv: boolean | undefined,
+        readonly channelId: string | undefined,
+        readonly channelLink: string | undefined,
     ) {
     }
 
@@ -28,6 +30,8 @@ export class Config {
         logInvoked: boolean | undefined,
         redisUrl: string | undefined,
         testEnv: boolean | undefined,
+        channelId: string | undefined,
+        channelLink: string | undefined,
     ) {
         const indices = undefinedIndices([
             botToken,
@@ -36,6 +40,8 @@ export class Config {
             botLink,
             logInvoked,
             testEnv,
+            channelId,
+            channelLink
         ])
 
         if (indices.length) {
@@ -60,6 +66,8 @@ export class Config {
             logInvoked!,
             redisUrl,
             testEnv!,
+            channelId!,
+            channelLink
         )
     }
 }
@@ -76,5 +84,7 @@ export const injectConfigFromEnv = () => {
         process.env.LOG_INVOKED == undefined ? undefined : process.env.LOG_INVOKED == "true",
         process.env.REDIS_URL,
         process.env.TEST_ENV == "true",
+        process.env.CHANNEL_ID,
+        process.env.CHANNEL_LINK,
     ))
 }

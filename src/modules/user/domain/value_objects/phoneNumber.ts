@@ -24,7 +24,7 @@ export class PhoneNumber extends ValueObject {
         super(value);
     }
 
-    static createForEthiopianMobilePhone(phoneNumber: string|undefined): Either<PhoneNumberFailure, PhoneNumber> {
+    static createForEthiopianMobilePhone(phoneNumber: string | undefined): Either<PhoneNumberFailure, PhoneNumber> {
         if (phoneNumber == undefined || phoneNumber == "") return Either.left(new EmptyPhoneNumberFailure())
         if (!ethiopianMobilePhoneRegExp.test(phoneNumber)) return Either.left(new InvalidEthiopianPhoneNumberFailure())
         return Either.right(new PhoneNumber(`+251${phoneNumber.slice(-9)}`))
@@ -36,24 +36,24 @@ export class PhoneNumber extends ValueObject {
         return Either.right(new PhoneNumber(phoneNumber))
     }
 
-    static createForEthiopian(phoneNumber: string|undefined): Either<PhoneNumberFailure, PhoneNumber> {
+    static createForEthiopian(phoneNumber: string | undefined): Either<PhoneNumberFailure, PhoneNumber> {
         if (phoneNumber == undefined || phoneNumber == "") return Either.left(new EmptyPhoneNumberFailure())
         if (!ethiopianMobilePhoneRegExp.test(phoneNumber) &&
             !ethiopianOfficePhoneRegExp.test(phoneNumber)
         ) return Either.left(new InvalidEthiopianPhoneNumberFailure())
-        return Either.right(new PhoneNumber(`+251${phoneNumber.slice(-9)}`))
+        return Either.right(new PhoneNumber(phoneNumber))
     }
 
     get withCountryCode() {
-        return `+251${this.value.substring(this.value.length - 9)}`
+        return `+251${this.value.slice(-9)}`
     }
 
     get with09Format() {
-        return `0${this.value.substring(this.value.length - 9)}`
+        return `0${this.value.slice(-9)}`
     }
 
     get core() {
-        return this.value.substring(this.value.length - 9)
+        return this.value.slice(-9)
     }
 
     /**

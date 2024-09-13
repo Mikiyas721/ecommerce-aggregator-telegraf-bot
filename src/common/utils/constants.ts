@@ -14,7 +14,7 @@ export const dependencyKeys = {
     startCommand: "startCommand",
     feedbackCommand: "feedbackCommand",
     //keyboards
-    startShoppingKeyboard: "startShoppingKeyboard",
+    botToScenesKeyboard: "botToScenesKeyboard",
     //inlineKeyboards
     /**
      * ------------------------- User Module --------------------------
@@ -24,11 +24,13 @@ export const dependencyKeys = {
     feedbackDatasource: "feedbackDatasource",
     productDatasource: "productDatasource",
     invitationDatasource: "invitationDatasource",
+    walletDatasource: "walletDatasource",
     //Repo
     userRepo: "userRepo",
     feedbackRepo: "feedbackRepo",
     productRepo: "productRepo",
     invitationRepo: "invitationRepo",
+    walletRepo: "walletRepo",
     //Use
     fetchUserByTelegramId: "fetchUserByTelegramId",
     fetchUserByPhone: "fetchUserByPhone",
@@ -37,9 +39,12 @@ export const dependencyKeys = {
     addFeedback: "addFeedback",
     fetchBundleOrProduct: "fetchBundleOrProduct",
     createInvitation: "createInvitation",
+    fetchMyWallet: "fetchMyWallet",
+    withdrawReward: "withdrawReward",
     //scenes
     userRegistrationScene: "userRegistrationScene",
     feedbackScene: "feedbackScene",
+    myWalletScene: "myWalletScene",
     //commands
     //keyboards
     sharePhoneNumberKeyboard: "sharePhoneNumberKeyboard",
@@ -51,6 +56,10 @@ export const dependencyKeys = {
     confirmFeedbackInlineKeyboard: "confirmFeedbackInlineKeyboard",
     cancelFeedbackInlineKeyboard: "cancelFeedbackInlineKeyboard",
     editFeedbackInlineKeyboard: "editFeedbackInlineKeyboard",
+    walletWithdrawInlineKeyboard: "walletWithdrawInlineKeyboard",
+    walletBackInlineKeyboard: "walletBackInlineKeyboard",
+    withdrawWithTopUpInlineKeyboard: "withdrawWithTopUpInlineKeyboard",
+    withdrawWithTopUpBackInlineKeyboard: "withdrawWithTopUpBackInlineKeyboard",
     /**
      * ------------------------- Order Module --------------------------
      * */
@@ -82,7 +91,8 @@ export const sceneKeys = {
     userRegistration: "userRegistration",
     feedback: "feedback",
     order: "order",
-    mainMenu: "mainMenu"
+    mainMenu: "mainMenu",
+    myWallet: "myWallet"
 }
 
 export const CALLBACK_DATA_SEPARATOR = "|"

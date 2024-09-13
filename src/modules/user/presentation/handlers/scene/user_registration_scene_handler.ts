@@ -8,6 +8,8 @@ import {User} from "../../../domain/entities/user";
 import {CommonHandlers} from "../../../../../common/presentation/handlers/common_handlers";
 import {Markup} from "telegraf";
 import {Name} from "../../../domain/value_objects/name";
+import * as console from "node:console";
+import {CommonCommandHandlers} from "../../../../../common/presentation/handlers/commands/common_command_handlers";
 
 export class UserRegistrationSceneHandlers {
     static async enter(ctx: TelegrafContext) {
@@ -25,7 +27,7 @@ export class UserRegistrationSceneHandlers {
                 return PhoneNumber.createForEthiopianMobilePhone(ctx.message.contact.phone_number).fold(async l => {
                     await ctx.replyWithHTML(ctx.i18n.t(l.messageLocaleKey))
                 }, async r => {
-                    ctx.scene.state.phoneNumber = r.with09Format
+                    ctx.scene.state.phoneNumber = r.withCountryCode
                     await ctx.replyWithHTML(
                         ctx.i18n.t("user.msg.pmt.enterFirstName"),
                         Markup.removeKeyboard()
@@ -70,14 +72,13 @@ export class UserRegistrationSceneHandlers {
             return registerUserResponse.fold(async l => {
                 await ctx.replyWithHTML(l.messageLocaleKey)
             }, async r => {
-                if (ctx.scene.state.productId) {
-                    return ctx.scene.enter(sceneKeys.order, {
-                        userId: r.id,
-                        productId: ctx.scene.state.productId
-                    })
-                }
                 await ctx.replyWithHTML(ctx.i18n.t("user.msg.info.registrationSuccess"))
-                return ctx.scene.ener(sceneKeys.mainMenu)
+                ctx.session.userId = r.id
+                return CommonCommandHandlers.handleStartCommandAction(
+                    ctx,
+                    ctx.scene.state.action,
+                    ctx.scene.state.id
+                )
             })
         })
     }

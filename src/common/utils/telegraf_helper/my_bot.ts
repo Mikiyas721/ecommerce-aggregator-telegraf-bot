@@ -13,12 +13,13 @@ async function mutateTelegrafAPICallFunction(tg: Telegram) {
     const oldCallApi: typeof tg.callApi = tg.callApi.bind(tg);
     tg.callApi = async function newCallApi(method, payload, signal) {
         return oldCallApi(method, payload, signal)
-            .then((value) => {
+            /*.then((value) => {
                 return Either.right(new Success(value))
-            })
+            })*/
             .catch((e) => {
                 console.log("Error caught in callApi\n", e)
-                return Either.left(new SimpleFailure(e.message))
+                return e
+                //return Either.left(new SimpleFailure(e.message))
             }) as any;
     };
 }

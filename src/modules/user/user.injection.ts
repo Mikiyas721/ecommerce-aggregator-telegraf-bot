@@ -18,13 +18,21 @@ import {injectFeedbackInlineKeyboards} from "./presentation/interactives/inline_
 import {CreateInvitation} from "./domain/use_cases/create_invitation";
 import {InvitationRemoteDatasource} from "./infrastructure/datasources/invitation_remote_datasource";
 import {InvitationRepoImpl} from "./infrastructure/repos/invitation_repo_impl";
+import {injectMyWalletScene} from "./presentation/scenes/my_wallet_scene";
+import {injectMyWalletInlineKeyboards} from "./presentation/interactives/inline_keyboards/my_wallet_inline_keyboards";
+import {WalletRemoteDatasource} from "./infrastructure/datasources/wallet_remote_datasource";
+import {WalletRepoImpl} from "./infrastructure/repos/wallet_repo_impl";
+import {FetchMyWallet} from "./domain/use_cases/fetch_my_wallet";
+import {WithdrawReward} from "./domain/use_cases/withdraw_reward";
 
 const injectPresentation = () => {
     injectFeedbackKeyboard()
     injectFeedbackInlineKeyboards()
     injectUserRegistrationKeyboards()
+    injectMyWalletInlineKeyboards()
     injectUserRegistrationScene()
     injectFeedbackScene()
+    injectMyWalletScene()
 }
 
 
@@ -48,6 +56,12 @@ const injectInfrastructure = () => {
         )
     )
     provider.registerLazySingleton(
+        dependencyKeys.walletDatasource,
+        () => new WalletRemoteDatasource(
+            provider.get(dependencyKeys.restDatasource)
+        )
+    )
+    provider.registerLazySingleton(
         dependencyKeys.userRepo,
         () => new UserRepoImpl(
             provider.get(dependencyKeys.userDatasource)
@@ -63,6 +77,12 @@ const injectInfrastructure = () => {
         dependencyKeys.invitationRepo,
         () => new InvitationRepoImpl(
             provider.get(dependencyKeys.invitationDatasource)
+        )
+    )
+    provider.registerLazySingleton(
+        dependencyKeys.walletRepo,
+        () => new WalletRepoImpl(
+            provider.get(dependencyKeys.walletDatasource)
         )
     )
 }
@@ -108,6 +128,18 @@ const injectDomain = () => {
         dependencyKeys.createInvitation,
         () => new CreateInvitation(
             provider.get(dependencyKeys.invitationRepo)
+        )
+    )
+    provider.registerLazySingleton(
+        dependencyKeys.fetchMyWallet,
+        () => new FetchMyWallet(
+            provider.get(dependencyKeys.walletRepo)
+        )
+    )
+    provider.registerLazySingleton(
+        dependencyKeys.withdrawReward,
+        () => new WithdrawReward(
+            provider.get(dependencyKeys.walletRepo)
         )
     )
 }
