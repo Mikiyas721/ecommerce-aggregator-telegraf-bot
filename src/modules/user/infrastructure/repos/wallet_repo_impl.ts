@@ -11,7 +11,7 @@ export class WalletRepoImpl implements WalletRepo {
 
     async fetchMyWallet(userId: string): Promise<Either<Failure, Wallet>> {
         const workStatusesResponse = await this.walletDatasource.restDatasource.get({
-            url: this.walletDatasource.myPath,
+            url: `${this.walletDatasource.myPath}/findOrCreate`,
             params: {filter: JSON.stringify({where: {userId}})}
         });
         return workStatusesResponse.fold(
