@@ -6,6 +6,7 @@ import {CommonHandlers} from "../common_handlers";
 import {CreateInvitation} from "../../../../modules/user/domain/use_cases/create_invitation";
 import {Invitation} from "../../../../modules/user/domain/entities/invitation";
 import {isChannelMember} from "../../../../modules/user/util/user_helpers";
+import {Config} from "../../../../config/config";
 
 export class CommonCommandHandlers {
     static async start(ctx: TelegrafContext) {
@@ -22,6 +23,11 @@ export class CommonCommandHandlers {
                 ctx.session.userId = r.value[0].id
                 return CommonCommandHandlers.handleStartCommandAction(ctx, action, id, false)
             } else {
+                if(action == "invite" && !await isChannelMember(ctx)){
+                    await ctx.replyWithHTML(ctx.i18n.t("user.msg.info.joinChannel", {
+                        channelLink: provider.get<Config>(dependencyKeys.config).channelLink
+                    }))
+                }
                 return ctx.scene.enter(sceneKeys.userRegistration, {
                     action,
                     id

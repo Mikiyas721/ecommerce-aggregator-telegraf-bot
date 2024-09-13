@@ -93,6 +93,7 @@ user:
       insufficientBalance: Insufficient Balance. You balance needs to be at least 5 ETB for withdrawal.
       processingTopUp: Processing your payment, please wait.
       withdrawSuccess: Top up successful
+      joinChannel: Please join our <a href="${channelLink}">channel</a> so your invitor can get the full reward.
 
 order:
   rms:
