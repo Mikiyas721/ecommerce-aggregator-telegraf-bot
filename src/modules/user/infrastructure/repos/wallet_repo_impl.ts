@@ -12,11 +12,11 @@ export class WalletRepoImpl implements WalletRepo {
     async fetchMyWallet(userId: string): Promise<Either<Failure, Wallet>> {
         const workStatusesResponse = await this.walletDatasource.restDatasource.get({
             url: `${this.walletDatasource.myPath}/findOrCreate`,
-            params: {filter: JSON.stringify({where: {userId}})}
+            params: {where: {userId}}
         });
         return workStatusesResponse.fold(
             l => Either.left(l),
-            r => Either.right(WalletDto.fromJson(r.value?.at(0)).toDomain())
+            r => Either.right(WalletDto.fromJson(r.value).toDomain())
         );
     }
 
