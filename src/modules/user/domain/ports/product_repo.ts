@@ -1,5 +1,4 @@
-import {Either} from "../../../../common/utils/fp/f_p";
-import {Failure, Success} from "../../../../common/utils/abstracts";
+import {Either, Failure, Success} from "telegraf-721";
 
 export interface ProductRepo {
     fetchProductById(productId: string): Promise<Either<Failure, Success<undefined | { id: string }>>>;

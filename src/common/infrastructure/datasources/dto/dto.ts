@@ -1,5 +1,4 @@
-import {Failure, ValueObjectCollection} from "../../../utils/abstracts";
-import {Either, Option} from "../../../utils/fp/f_p";
+import {Either, Option, Failure, ValueObjectCollection} from "telegraf-721";
 import Entity from "../../../domain/entities/entity";
 
 /**

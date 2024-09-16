@@ -1,6 +1,5 @@
-import {provider} from "telegraf-721";
+import {provider, MyCommand} from "telegraf-721";
 import {dependencyKeys} from "../../../utils/constants";
-import {MyCommand} from "../../../utils/telegraf_helper/my_command";
 import {CommonCommandHandlers} from "../../handlers/commands/common_command_handlers";
 
 export const injectCommonCommands = () => {

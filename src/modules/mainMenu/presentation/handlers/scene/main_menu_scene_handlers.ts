@@ -1,7 +1,5 @@
-import {TelegrafContext} from "../../../../../common/utils/telegraf_types/context_types";
 import {sendUseOnlyButtonsBelowErrorMsg} from "../../../../../common/utils/common_helpers";
-import {MyMarkup} from "../../../../../common/utils/telegraf_helper/my_markup";
-import {provider} from "telegraf-721";
+import {provider, TelegrafContext, MyMarkup} from "telegraf-721";
 import {dependencyKeys} from "../../../../../common/utils/constants";
 
 export class MainMenuSceneHandlers {

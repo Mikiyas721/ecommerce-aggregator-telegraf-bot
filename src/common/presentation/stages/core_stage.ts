@@ -1,7 +1,6 @@
 import {Scenes} from "telegraf"
-import {provider} from "telegraf-721";
+import {provider, MyScene} from "telegraf-721";
 import {dependencyKeys} from "../../utils/constants";
-import {MyScene} from "../../utils/telegraf_helper/my_scene";
 
 export const injectMainStage = () => {
     provider.registerSingleton(dependencyKeys.mainStage, new Scenes.Stage(

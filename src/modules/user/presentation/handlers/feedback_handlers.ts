@@ -1,6 +1,4 @@
-import {TelegrafContext} from "../../../../common/utils/telegraf_types/context_types";
-import {MyMarkup} from "../../../../common/utils/telegraf_helper/my_markup";
-import {provider} from "telegraf-721";
+import {provider, MyMarkup, TelegrafContext} from "telegraf-721";
 import {dependencyKeys} from "../../../../common/utils/constants";
 
 export class FeedbackHandlers {

@@ -1,8 +1,5 @@
-import {TelegrafContext} from "../../../../../common/utils/telegraf_types/context_types";
-import {provider} from "telegraf-721";
+import {provider, MyMarkup, MyCoreCallbackInlineKeyboard, TelegrafContext} from "telegraf-721";
 import {CALLBACK_DATA_SEPARATOR, dependencyKeys, sceneKeys} from "../../../../../common/utils/constants";
-import {MyMarkup} from "../../../../../common/utils/telegraf_helper/my_markup";
-import {MyCoreCallbackInlineKeyboard} from "../../../../../common/utils/telegraf_helper/my_inline_keyboard";
 import {UserReplyMarkups} from "../../../util/user_reply_markups";
 import {WithdrawReward} from "../../../domain/use_cases/withdraw_reward";
 
@@ -48,7 +45,7 @@ export class MyWalletInlineKeyboardHandlers {
             await ctx.replyWithHTML(l.messageLocaleKey)
             return ctx.answerCbQuery()
         }, async _ => {
-            await ctx.deleteMessage(waitMessage.message_id)
+            await ctx.deleteMessage(waitMessage.getRight()?.value.message_id)
             await ctx.deleteMessage()
             await ctx.replyWithHTML(ctx.i18n.t("user.msg.info.withdrawSuccess"))
             return ctx.scene.enter(sceneKeys.mainMenu)

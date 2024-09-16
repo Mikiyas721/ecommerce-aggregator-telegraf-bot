@@ -1,6 +1,5 @@
-import {provider} from "telegraf-721";
+import {provider, MyCoreCallbackInlineKeyboard} from "telegraf-721";
 import {dependencyKeys} from "../../../../../common/utils/constants";
-import {MyCoreCallbackInlineKeyboard} from "../../../../../common/utils/telegraf_helper/my_inline_keyboard";
 import {MyWalletInlineKeyboardHandlers} from "../../handlers/inline_keyboard/my_wallet_inline_keyboard_handlers";
 
 export const injectMyWalletInlineKeyboards = () => {

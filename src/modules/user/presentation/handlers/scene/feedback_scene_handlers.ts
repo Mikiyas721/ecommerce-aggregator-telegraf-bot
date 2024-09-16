@@ -1,10 +1,8 @@
-import {TelegrafContext} from "../../../../../common/utils/telegraf_types/context_types";
-import {MyMarkup} from "../../../../../common/utils/telegraf_helper/my_markup";
 import {FeedbackBody} from "../../../domain/value_objects/feedback_body";
-import {Markup} from "telegraf";
 import {FeedbackHandlers} from "../feedback_handlers";
 import {dependencyKeys} from "../../../../../common/utils/constants";
-import {provider} from "telegraf-721";
+import {Markup} from "telegraf";
+import {provider, MyMarkup, TelegrafContext} from "telegraf-721";
 
 export class FeedbackSceneHandlers {
     static async enter(ctx: TelegrafContext) {

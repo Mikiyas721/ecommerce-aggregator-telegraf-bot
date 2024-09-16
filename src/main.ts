@@ -1,12 +1,10 @@
 import 'dotenv/config'
 import {Scenes, session} from "telegraf";
 import {dependencyKeys} from "./common/utils/constants";
-import {MyBot} from "./common/utils/telegraf_helper/my_bot";
 import {Config} from "./config/config";
 import {injectDependencies} from "./injection";
-import {Translator} from "./modules/localization/translator";
 import RedisSession from "telegraf-session-redis";
-import {provider, telegraf721} from "telegraf-721"
+import {provider, telegraf721, MyBot, Translator} from "telegraf-721"
 import * as console from "node:console";
 
 async function main() {

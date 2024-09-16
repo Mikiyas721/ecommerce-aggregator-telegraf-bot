@@ -1,5 +1,4 @@
-import {TelegrafContext} from "../../../../common/utils/telegraf_types/context_types";
-import {provider} from "telegraf-721";
+import {provider, TelegrafContext} from "telegraf-721";
 import {PlaceOrder} from "../../domain/use_cases/place_order";
 import {dependencyKeys} from "../../../../common/utils/constants";
 import {Order} from "../../domain/entities/order";

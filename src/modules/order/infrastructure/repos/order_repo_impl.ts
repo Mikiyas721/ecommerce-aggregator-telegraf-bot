@@ -1,10 +1,8 @@
 import {OrderRepo} from "../../domain/ports/order_repo";
 import {OrderRemoteDatasource} from "../datasources/order_datasource";
 import {Order} from "../../domain/entities/order";
-import {Either} from "../../../../common/utils/fp/f_p";
-import {Failure, ValuelessSuccess} from "../../../../common/utils/abstracts";
+import {Either, Failure, SimpleFailure} from "telegraf-721";
 import {OrderDto} from "../dtos/order_dto";
-import {SimpleFailure} from "../../../../common/utils/either";
 
 export class OrderRepoImpl implements OrderRepo {
     constructor(private orderDatasource: OrderRemoteDatasource) {

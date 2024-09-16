@@ -1,5 +1,4 @@
 import Entity from "../../../../common/domain/entities/entity";
-import {ValueObjectCollection} from "../../../../common/utils/abstracts";
 
 export class Wallet extends Entity {
     private constructor(

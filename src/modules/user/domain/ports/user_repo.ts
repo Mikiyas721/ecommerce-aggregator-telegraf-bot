@@ -1,5 +1,4 @@
-import {Either} from "../../../../common/utils/fp/f_p";
-import {Failure, Success, ValuelessSuccess} from "../../../../common/utils/abstracts";
+import {Either, Failure, Success} from "telegraf-721";
 import {User} from "../entities/user";
 
 export interface UserRepo {

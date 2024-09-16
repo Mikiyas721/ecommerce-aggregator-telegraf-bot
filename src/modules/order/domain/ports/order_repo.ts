@@ -1,6 +1,5 @@
 import {Order} from "../entities/order";
-import {Either} from "../../../../common/utils/fp/f_p";
-import {Failure} from "../../../../common/utils/abstracts";
+import {Either, Failure} from "telegraf-721";
 
 export interface OrderRepo {
     createOrder(order: Order): Promise<Either<Failure, Order>>

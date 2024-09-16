@@ -1,5 +1,4 @@
-import {Either} from "../../../utils/fp/f_p";
-import {Failure} from "../../../utils/abstracts";
+import {Either, Failure} from "telegraf-721";
 import {RestRequest} from "./rest_request";
 import {RestResponse, RestResponseFailure} from "./rest_response";
 

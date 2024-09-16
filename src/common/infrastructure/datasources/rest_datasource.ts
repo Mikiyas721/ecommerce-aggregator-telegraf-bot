@@ -1,8 +1,7 @@
 import {RestDatasource} from "./rest_datasource/rest_datasource";
 import {RestRequest} from "./rest_datasource/rest_request";
 import {OtherRemoteRequestFailure, RestResponse, RestResponseFailure} from "./rest_datasource/rest_response";
-import {Failure} from "../../utils/abstracts";
-import {Either} from "../../utils/fp/f_p";
+import {Either, Failure} from "telegraf-721";
 import axios, {AxiosInstance, AxiosResponse} from "axios";
 import {Config} from "../../../config/config";
 

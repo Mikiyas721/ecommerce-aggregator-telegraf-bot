@@ -1,10 +1,8 @@
 import {UserRepo} from "../../domain/ports/user_repo";
-import {Either} from "../../../../common/utils/fp/f_p";
-import {Failure, Success, ValuelessSuccess} from "../../../../common/utils/abstracts";
+import {Either, SimpleFailure, Failure, Success} from "telegraf-721";
 import {User} from "../../domain/entities/user";
 import {UserRemoteDatasource} from "../datasources/user_remote_datasource";
 import {UserDto} from "../dtos/user_dto";
-import {SimpleFailure} from "../../../../common/utils/either";
 
 export class UserRepoImpl implements UserRepo {
     constructor(private userRemoteDatasource: UserRemoteDatasource) {

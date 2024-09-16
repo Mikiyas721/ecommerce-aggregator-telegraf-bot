@@ -1,6 +1,6 @@
 import {IdDto} from "../../../../common/infrastructure/datasources/dto/dto";
 import {User} from "../../domain/entities/user";
-import {Option} from "../../../../common/utils/fp/f_p";
+import {Option} from "telegraf-721";
 
 export class UserDto extends IdDto<User> {
     constructor(

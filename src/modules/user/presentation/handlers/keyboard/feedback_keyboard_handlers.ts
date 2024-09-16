@@ -1,4 +1,4 @@
-import {TelegrafContext} from "../../../../../common/utils/telegraf_types/context_types";
+import {TelegrafContext} from "telegraf-721";
 import {sceneKeys} from "../../../../../common/utils/constants";
 
 export class FeedbackKeyboardHandlers {

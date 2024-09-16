@@ -1,6 +1,5 @@
 import {Feedback} from "../entities/feedback";
-import {Either} from "../../../../common/utils/fp/f_p";
-import {Failure} from "../../../../common/utils/abstracts";
+import {Either, Failure} from "telegraf-721";
 
 export interface FeedbackRepo {
     addFeedback(feedback: Feedback): Promise<Either<Failure, Feedback>>

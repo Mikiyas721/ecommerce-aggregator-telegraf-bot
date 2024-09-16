@@ -1,7 +1,6 @@
 import {WalletRepo} from "../../domain/ports/wallet_repo";
 import {WalletRemoteDatasource} from "../datasources/wallet_remote_datasource";
-import {Either} from "../../../../common/utils/fp/f_p";
-import {Failure, ValuelessSuccess} from "../../../../common/utils/abstracts";
+import {Either, Failure, ValuelessSuccess} from "telegraf-721";
 import {Wallet} from "../../domain/entities/wallet";
 import {WalletDto} from "../dtos/wallet_dto";
 

@@ -1,6 +1,6 @@
-import {TelegrafContext} from "../../../../../common/utils/telegraf_types/context_types";
 import {OrderHandlers} from "../order_handlers";
 import {Markup} from "telegraf";
+import {TelegrafContext} from "telegraf-721"
 
 export class OrderKeyboardHandlers {
     static async cancel(ctx: TelegrafContext) {

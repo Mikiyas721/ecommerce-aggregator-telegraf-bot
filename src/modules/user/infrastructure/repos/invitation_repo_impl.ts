@@ -2,8 +2,7 @@ import {InvitationRepo} from "../../domain/ports/invitation_repo";
 import {InvitationRemoteDatasource} from "../datasources/invitation_remote_datasource";
 import {Invitation} from "../../domain/entities/invitation";
 import {InvitationDto} from "../dtos/invitation_dto";
-import {Either} from "../../../../common/utils/fp/f_p";
-import {Failure, Success} from "../../../../common/utils/abstracts";
+import {Either, Failure, Success} from "telegraf-721";
 
 export class InvitationRepoImpl implements InvitationRepo {
     constructor(private remoteDatasource: InvitationRemoteDatasource) {

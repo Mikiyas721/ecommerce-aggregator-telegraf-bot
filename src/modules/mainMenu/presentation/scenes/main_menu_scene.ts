@@ -1,8 +1,6 @@
-import {provider} from "telegraf-721";
-import {MyScene} from "../../../../common/utils/telegraf_helper/my_scene";
+import {provider, MyScene, MyCommand} from "telegraf-721";
 import {dependencyKeys, sceneKeys} from "../../../../common/utils/constants";
 import {MainMenuSceneHandlers} from "../handlers/scene/main_menu_scene_handlers";
-import {MyCommand} from "../../../../common/utils/telegraf_helper/my_command";
 
 export const injectMainMenuScenes = () => {
     provider.registerSingleton(

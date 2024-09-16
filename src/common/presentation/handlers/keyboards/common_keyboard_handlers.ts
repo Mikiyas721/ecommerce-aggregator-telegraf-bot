@@ -1,7 +1,5 @@
-import {TelegrafContext} from "../../../utils/telegraf_types/context_types";
 import {CommonHandlers} from "../common_handlers";
-import {isChannelMember} from "../../../../modules/user/util/user_helpers";
-import * as console from "node:console";
+import {TelegrafContext} from "telegraf-721"
 
 export class CommonKeyboardHandlers {
     static async botToScenes(ctx: TelegrafContext) {

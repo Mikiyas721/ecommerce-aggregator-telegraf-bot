@@ -1,9 +1,7 @@
 import {FeedbackRepo} from "../../domain/ports/feedback_repo";
 import {FeedbackRemoteDatasource} from "../datasources/feedback_remote_datasource";
 import {Feedback} from "../../domain/entities/feedback";
-import {Either} from "../../../../common/utils/fp/f_p";
-import {Failure} from "../../../../common/utils/abstracts";
-import {SimpleFailure} from "../../../../common/utils/either";
+import {Either, Failure, SimpleFailure} from "telegraf-721";
 import {FeedbackDto} from "../dtos/feedback_dto";
 
 export class FeedbackRepoImpl implements FeedbackRepo {

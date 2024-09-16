@@ -1,6 +1,6 @@
 import Entity from "../../../../common/domain/entities/entity";
 import {PhoneNumber} from "../value_objects/phoneNumber";
-import {Option} from "../../../../common/utils/fp/f_p";
+import {Option} from "telegraf-721";
 import {Name} from "../value_objects/name";
 
 export class User extends Entity {
@@ -34,9 +34,9 @@ export class User extends Entity {
 
         return Option.some(new User(
             id,
-            firstNameObject.getRight(),
-            lastNameObject.getRight(),
-            phoneNumberObject.getRight(),
+            firstNameObject.getRight()!,
+            lastNameObject.getRight()!,
+            phoneNumberObject.getRight()!,
             telegramId
         ))
     }
@@ -53,9 +53,9 @@ export class User extends Entity {
 
         return new User(
             undefined,
-            firstNameObject.getRight(),
-            lastNameObject.getRight(),
-            phoneNumberObject.getRight(),
+            firstNameObject.getRight()!,
+            lastNameObject.getRight()!,
+            phoneNumberObject.getRight()!,
             telegramId
         )
     }

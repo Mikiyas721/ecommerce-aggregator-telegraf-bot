@@ -1,5 +1,5 @@
 import Entity from "../../../../common/domain/entities/entity";
-import {Option} from "../../../../common/utils/fp/f_p";
+import {Option} from "telegraf-721";
 import {FeedbackBody} from "../value_objects/feedback_body";
 
 export class Feedback extends Entity {
@@ -23,7 +23,7 @@ export class Feedback extends Entity {
 
         return Option.some(new Feedback(
             id,
-            feedbackBodyObject.getRight(),
+            feedbackBodyObject.getRight()!,
             userId
         ))
     }
@@ -36,7 +36,7 @@ export class Feedback extends Entity {
 
         return new Feedback(
             undefined,
-            feedbackBodyObject.getRight(),
+            feedbackBodyObject.getRight()!,
             userId
         )
     }

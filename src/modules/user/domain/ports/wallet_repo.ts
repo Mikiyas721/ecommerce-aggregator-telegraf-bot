@@ -1,5 +1,4 @@
-import {Either} from "../../../../common/utils/fp/f_p";
-import {Failure, ValuelessSuccess} from "../../../../common/utils/abstracts";
+import {Either, Failure, ValuelessSuccess} from "telegraf-721";
 import {Wallet} from "../entities/wallet";
 
 export interface WalletRepo {

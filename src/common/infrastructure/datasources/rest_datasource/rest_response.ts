@@ -1,5 +1,4 @@
-import {Failure} from "../../../utils/abstracts";
-import {Right} from "../../../utils/fp/f_p";
+import {Right, Failure} from "telegraf-721";
 
 class RestResponseError {
     constructor(

@@ -1,5 +1,4 @@
-import {Failure, ValueObject} from "../../../../common/utils/abstracts";
-import {Either} from "../../../../common/utils/fp/f_p";
+import {Either, Failure, ValueObject} from "telegraf-721";
 
 export abstract class NameFailure extends Failure {
 }

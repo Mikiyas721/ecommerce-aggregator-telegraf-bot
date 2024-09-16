@@ -1,5 +1,5 @@
 import {IdDto} from "../../../../common/infrastructure/datasources/dto/dto";
-import {Option} from "../../../../common/utils/fp/f_p";
+import {Option} from "telegraf-721";
 import {Feedback} from "../../domain/entities/feedback";
 
 export class FeedbackDto extends IdDto<Feedback> {
