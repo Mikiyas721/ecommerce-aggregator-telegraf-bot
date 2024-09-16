@@ -1,4 +1,4 @@
-import {provider} from "../injection";
+import {provider} from "telegraf-721";
 import {dependencyKeys} from "../common/utils/constants";
 import {undefinedIndices} from "../common/utils/common_helpers";
 

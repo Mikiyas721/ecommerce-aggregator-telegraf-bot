@@ -1,5 +1,5 @@
 import {TelegrafContext} from "../../../../../common/utils/telegraf_types/context_types";
-import {provider} from "../../../../../injection";
+import {provider} from "telegraf-721";
 import {CALLBACK_DATA_SEPARATOR, dependencyKeys, sceneKeys} from "../../../../../common/utils/constants";
 import {MyMarkup} from "../../../../../common/utils/telegraf_helper/my_markup";
 import {MyCoreCallbackInlineKeyboard} from "../../../../../common/utils/telegraf_helper/my_inline_keyboard";

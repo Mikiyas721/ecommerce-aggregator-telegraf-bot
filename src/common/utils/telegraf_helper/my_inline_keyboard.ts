@@ -1,6 +1,6 @@
 import {CALLBACK_DATA_SEPARATOR, dependencyKeys, getRegExpEquivalent} from "../constants";
 import {TelegrafContext} from "../telegraf_types/context_types";
-import {provider} from "../../../injection";
+import {provider} from "telegraf-721";
 import {Translator} from "../../../modules/localization/translator";
 
 export abstract class MyInlineKeyboard {

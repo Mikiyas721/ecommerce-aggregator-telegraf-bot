@@ -1,4 +1,4 @@
-import {provider} from "../../injection";
+import {provider} from "telegraf-721";
 import {dependencyKeys} from "../utils/constants";
 import {AxiosDatasource} from "./datasources/rest_datasource";
 

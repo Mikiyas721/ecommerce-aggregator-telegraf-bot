@@ -1,6 +1,6 @@
 import {TelegrafContext} from "../../../../../common/utils/telegraf_types/context_types";
 import {MyMarkup} from "../../../../../common/utils/telegraf_helper/my_markup";
-import {provider} from "../../../../../injection";
+import {provider} from "telegraf-721";
 import {DeliveryDate} from "../../../domain/value_objects/delivery_date";
 import {dependencyKeys} from "../../../../../common/utils/constants";
 import {DeliveryAddress} from "../../../domain/value_objects/delivery_address";

@@ -1,5 +1,5 @@
 import {Scenes} from "telegraf"
-import {provider} from "../../../injection";
+import {provider} from "telegraf-721";
 import {dependencyKeys} from "../../utils/constants";
 import {MyScene} from "../../utils/telegraf_helper/my_scene";
 

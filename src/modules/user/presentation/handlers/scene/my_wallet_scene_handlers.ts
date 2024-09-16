@@ -1,5 +1,5 @@
 import {TelegrafContext} from "../../../../../common/utils/telegraf_types/context_types";
-import {provider} from "../../../../../injection";
+import {provider} from "telegraf-721";
 import {FetchUserByTelegramId} from "../../../domain/use_cases/fetch_user_by_telegram_id";
 import {dependencyKeys} from "../../../../../common/utils/constants";
 import {FetchMyWallet} from "../../../domain/use_cases/fetch_my_wallet";

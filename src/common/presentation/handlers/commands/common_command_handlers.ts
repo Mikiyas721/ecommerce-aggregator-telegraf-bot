@@ -1,8 +1,7 @@
 import {TelegrafContext} from "../../../utils/telegraf_types/context_types";
-import {provider} from "../../../../injection";
+import {provider} from "telegraf-721";
 import {dependencyKeys, sceneKeys} from "../../../utils/constants";
 import {FetchUserByTelegramId} from "../../../../modules/user/domain/use_cases/fetch_user_by_telegram_id";
-import {CommonHandlers} from "../common_handlers";
 import {CreateInvitation} from "../../../../modules/user/domain/use_cases/create_invitation";
 import {Invitation} from "../../../../modules/user/domain/entities/invitation";
 import {isChannelMember} from "../../../../modules/user/util/user_helpers";

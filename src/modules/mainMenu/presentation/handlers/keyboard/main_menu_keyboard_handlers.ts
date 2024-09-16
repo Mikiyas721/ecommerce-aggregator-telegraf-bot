@@ -1,6 +1,6 @@
 import {TelegrafContext} from "../../../../../common/utils/telegraf_types/context_types";
 import {dependencyKeys, sceneKeys} from "../../../../../common/utils/constants";
-import {provider} from "../../../../../injection";
+import {provider} from "telegraf-721";
 import {Config} from "../../../../../config/config";
 
 export class MainMenuKeyboardHandlers {

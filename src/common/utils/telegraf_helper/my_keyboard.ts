@@ -1,4 +1,4 @@
-import {provider} from "../../../injection";
+import {provider} from "telegraf-721";
 import {Translator} from "../../../modules/localization/translator";
 import {TelegrafContext} from "../telegraf_types/context_types";
 import {dependencyKeys} from "../constants";

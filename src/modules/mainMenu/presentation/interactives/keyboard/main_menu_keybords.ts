@@ -1,4 +1,4 @@
-import {provider} from "../../../../../injection";
+import {provider} from "telegraf-721";
 import {dependencyKeys} from "../../../../../common/utils/constants";
 import {MyLabelKeyboard} from "../../../../../common/utils/telegraf_helper/my_keyboard";
 import {MainMenuKeyboardHandlers} from "../../handlers/keyboard/main_menu_keyboard_handlers";

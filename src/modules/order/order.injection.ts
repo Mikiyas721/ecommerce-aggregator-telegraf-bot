@@ -1,6 +1,6 @@
 import {injectOrderScenes} from "./presentation/scenes/order_scenes";
 import {injectOrderKeyboards} from "./presentation/interactives/keyboards/order_keyboards";
-import {provider} from "../../injection";
+import {provider} from "telegraf-721";
 import {dependencyKeys} from "../../common/utils/constants";
 import {OrderRemoteDatasource} from "./infrastructure/datasources/order_datasource";
 import {OrderRepoImpl} from "./infrastructure/repos/order_repo_impl";

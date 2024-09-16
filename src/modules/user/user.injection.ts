@@ -1,4 +1,4 @@
-import {provider} from "../../injection";
+import {provider} from "telegraf-721";
 import {dependencyKeys} from "../../common/utils/constants";
 import {UserRemoteDatasource} from "./infrastructure/datasources/user_remote_datasource";
 import {UserRepoImpl} from "./infrastructure/repos/user_repo_impl";

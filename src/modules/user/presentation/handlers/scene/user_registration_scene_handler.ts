@@ -1,11 +1,10 @@
 import {TelegrafContext} from "../../../../../common/utils/telegraf_types/context_types";
 import {MyMarkup} from "../../../../../common/utils/telegraf_helper/my_markup";
 import {PhoneNumber} from "../../../domain/value_objects/phoneNumber";
-import {provider} from "../../../../../injection";
+import {provider} from "telegraf-721";
 import {dependencyKeys, sceneKeys} from "../../../../../common/utils/constants";
 import {RegisterUser} from "../../../domain/use_cases/register_user";
 import {User} from "../../../domain/entities/user";
-import {CommonHandlers} from "../../../../../common/presentation/handlers/common_handlers";
 import {Markup} from "telegraf";
 import {Name} from "../../../domain/value_objects/name";
 import * as console from "node:console";

@@ -1,4 +1,4 @@
-import {provider} from "../../../../injection";
+import {provider} from "telegraf-721";
 import {MyScene} from "../../../../common/utils/telegraf_helper/my_scene";
 import {dependencyKeys, sceneKeys} from "../../../../common/utils/constants";
 import {MainMenuSceneHandlers} from "../handlers/scene/main_menu_scene_handlers";

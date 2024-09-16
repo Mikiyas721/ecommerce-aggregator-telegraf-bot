@@ -1,5 +1,5 @@
 import {TelegrafContext} from "../../utils/telegraf_types/context_types";
-import {provider} from "../../../injection";
+import {provider} from "telegraf-721";
 import {FetchUserByTelegramId} from "../../../modules/user/domain/use_cases/fetch_user_by_telegram_id";
 import {dependencyKeys, sceneKeys} from "../../utils/constants";
 

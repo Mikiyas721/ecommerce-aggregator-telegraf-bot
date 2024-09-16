@@ -1,7 +1,6 @@
 import {TelegrafContext} from "../../../../../common/utils/telegraf_types/context_types";
-import {CommonHandlers} from "../../../../../common/presentation/handlers/common_handlers";
 import {FeedbackHandlers} from "../feedback_handlers";
-import {provider} from "../../../../../injection";
+import {provider} from "telegraf-721";
 import {AddFeedback} from "../../../domain/use_cases/add_feedback";
 import {dependencyKeys, sceneKeys} from "../../../../../common/utils/constants";
 import {Feedback} from "../../../domain/entities/feedback";

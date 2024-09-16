@@ -1,6 +1,6 @@
 import {Markup, Telegraf} from "telegraf";
 import {TelegrafContext} from "./telegraf_types/context_types";
-import {provider} from "../../injection";
+import {provider} from "telegraf-721";
 import {Config} from "../../config/config";
 import {dependencyKeys} from "./constants";
 import {Either} from "./fp/f_p";
