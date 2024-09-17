@@ -1,5 +1,5 @@
-import {provider, MyMarkup, MyCoreCallbackInlineKeyboard, TelegrafContext} from "telegraf-721";
-import {CALLBACK_DATA_SEPARATOR, dependencyKeys, sceneKeys} from "../../../../../common/utils/constants";
+import {provider, MyMarkup, MyCoreCallbackInlineKeyboard, TelegrafContext, CALLBACK_DATA_SEPARATOR} from "telegraf-721";
+import {dependencyKeys, sceneKeys} from "../../../../../common/utils/constants";
 import {UserReplyMarkups} from "../../../util/user_reply_markups";
 import {WithdrawReward} from "../../../domain/use_cases/withdraw_reward";
 

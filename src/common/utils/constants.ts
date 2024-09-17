@@ -1,5 +1,4 @@
 export const dependencyKeys = {
-    translator: "translator",
     config: "config",
     mainStage: "mainStage",
     restDatasource: "restDatasource",
@@ -93,13 +92,4 @@ export const sceneKeys = {
     order: "order",
     mainMenu: "mainMenu",
     myWallet: "myWallet"
-}
-
-export const CALLBACK_DATA_SEPARATOR = "|"
-export const CALLBACK_DATA_SEPARATOR_2 = "&"
-
-export const getRegExpEquivalent = (separator: string) => {
-    if ("|") return "\\|"
-    if ("&") return "\\&"
-    return separator
 }

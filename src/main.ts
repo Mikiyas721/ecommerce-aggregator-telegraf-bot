@@ -4,15 +4,14 @@ import {dependencyKeys} from "./common/utils/constants";
 import {Config} from "./config/config";
 import {injectDependencies} from "./injection";
 import RedisSession from "telegraf-session-redis";
-import {provider, telegraf721, MyBot, Translator} from "telegraf-721"
+import {provider, MyBot, Translator, dependencyKeys as internalDependencyKeys} from "telegraf-721"
 import * as console from "node:console";
 
 async function main() {
-    await telegraf721()
     await injectDependencies()
 
     const botConfig = provider.get<Config>(dependencyKeys.config)
-    const i18n = provider.get<Translator>(dependencyKeys.translator)
+    const i18n = provider.get<Translator>(internalDependencyKeys.translator)
 
     const bot = new MyBot(
         botConfig.botToken,
