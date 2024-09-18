@@ -1,4 +1,4 @@
-import {provider, TelegrafContext} from "telegraf-721";
+import {MyMarkup, provider, TelegrafContext} from "telegraf-721";
 import {PlaceOrder} from "../../domain/use_cases/place_order";
 import {dependencyKeys} from "../../../../common/utils/constants";
 import {Order} from "../../domain/entities/order";
@@ -20,7 +20,7 @@ export class OrderHandlers {
         }, async _ => {
             await ctx.replyWithHTML(
                 ctx.i18n.t("order.msg.info.orderSuccess"),
-                Markup.removeKeyboard()
+                MyMarkup.getRemoveKeyboardMarkup()
             )
             return ctx.scene.leave()
         })

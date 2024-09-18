@@ -1,12 +1,12 @@
 import {Markup, Telegraf} from "telegraf";
-import {provider, TelegrafContext, Either, Failure, MyResult} from "telegraf-721";
+import {provider, TelegrafContext, Either, Failure, MyResult, MyMarkup} from "telegraf-721";
 import {Config} from "../../config/config";
 import {dependencyKeys} from "./constants";
 import {FetchUserByTelegramId} from "../../modules/user/domain/use_cases/fetch_user_by_telegram_id";
 import * as console from "node:console";
 
 export const clearKeyboards = async (ctx: TelegrafContext) => {
-    const message = await ctx.replyWithHTML("*", Markup.removeKeyboard());
+    const message = await ctx.replyWithHTML("*", MyMarkup.getRemoveKeyboardMarkup());
     await ctx.deleteMessage(message.getRight()?.value.message_id)
 }
 

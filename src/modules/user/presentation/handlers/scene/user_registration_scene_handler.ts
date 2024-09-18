@@ -27,7 +27,7 @@ export class UserRegistrationSceneHandlers {
                     ctx.scene.state.phoneNumber = r.withCountryCode
                     await ctx.replyWithHTML(
                         ctx.i18n.t("user.msg.pmt.enterFirstName"),
-                        Markup.removeKeyboard()
+                        MyMarkup.getRemoveKeyboardMarkup()
                     )
                     return ctx.wizard.selectStep(1)
                 })
@@ -46,7 +46,7 @@ export class UserRegistrationSceneHandlers {
             ctx.scene.state.firstName = r.value
             await ctx.replyWithHTML(
                 ctx.i18n.t("user.msg.pmt.enterLastName"),
-                Markup.removeKeyboard()
+                MyMarkup.getRemoveKeyboardMarkup()
             )
             return ctx.wizard.selectStep(2)
         })

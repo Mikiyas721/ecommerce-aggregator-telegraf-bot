@@ -14,7 +14,10 @@ export class FeedbackSceneHandlers {
             await ctx.replyWithHTML(l.messageLocaleKey)
         }, async r => {
             ctx.scene.state.feedback = r.value
-            await ctx.replyWithHTML(ctx.i18n.t("user.msg.pmt.feedbackVer"), Markup.removeKeyboard())
+            await ctx.replyWithHTML(
+                ctx.i18n.t("user.msg.pmt.feedbackVer"),
+                MyMarkup.getRemoveKeyboardMarkup()
+            )
             await ctx.replyWithHTML(
                 ctx.i18n.t("user.msg.info.feedbackSummary", {
                     feedback: r.value
