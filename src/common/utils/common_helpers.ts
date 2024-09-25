@@ -1,64 +1,10 @@
-import {Markup, Telegraf} from "telegraf";
-import {provider, TelegrafContext, Either, Failure, MyResult, MyMarkup} from "telegraf-721";
-import {Config} from "../../config/config";
+import {provider, TelegrafContext, Either, Failure, MyMarkup} from "telegraf-721";
 import {dependencyKeys} from "./constants";
 import {FetchUserByTelegramId} from "../../modules/user/domain/use_cases/fetch_user_by_telegram_id";
-import * as console from "node:console";
 
 export const clearKeyboards = async (ctx: TelegrafContext) => {
     const message = await ctx.replyWithHTML("*", MyMarkup.getRemoveKeyboardMarkup());
-    await ctx.deleteMessage(message.getRight()?.value.message_id)
-}
-
-export const isInlineButtonRequest = (ctx: TelegrafContext) => {
-    return ctx?.update?.callback_query != undefined
-}
-
-export const handlerFactory = <T = void, F = void>(
-    params: {
-        logLabel: string,
-        handler: (ctx: TelegrafContext) => Promise<T> | T,
-        onFailure?: () => Promise<F> | F,
-        logHandlerInvoked?: boolean,
-        logWithTimeStamp?: boolean,
-        withUpdateTypes?: any
-    }
-) => {
-    const generatedHandler = async (ctx: any) => {
-        const chatType = ctx?.message?.chat?.type ?? ctx?.update?.callback_query?.message?.chat?.type
-        if (chatType == "private") {
-            try {
-                if (provider.get<Config>(dependencyKeys.config).logInvoked || params.logHandlerInvoked) {
-                    console.log(
-                        params.logWithTimeStamp ?
-                            `${new Date(Date.now()).toString()} ${params.logLabel}` :
-                            `${params.logLabel}`
-                    )
-                }
-                return await params.handler(ctx)
-            } catch (e) {
-                if (params.onFailure) {
-                    try {
-                        return await params.onFailure()
-                    } catch (e) {
-                        console.log(`Error caught in ${params.logLabel} onFailure`)
-                        return console.log(e)
-                    }
-                } else {
-                    console.log(`Error caught in ${params.logLabel}`)
-                    return console.log(e)
-                }
-            }
-        } else {
-            if (isInlineButtonRequest(ctx)) await ctx.answerCbQuery()
-            return ctx.replyWithHTML(ctx.i18n.t("common.msg.err.goToBotMsg"))
-        }
-    }
-    if (params.withUpdateTypes) {
-        return Telegraf.on(params.withUpdateTypes, generatedHandler)
-    } else {
-        return generatedHandler
-    }
+    await ctx.deleteMessage(message.getRight()?.message_id)
 }
 
 export const undefinedIndices = (myList: any[]) => {
@@ -109,12 +55,12 @@ interface UserInfo {
     userId: string,
 }
 
-export const getUserInfoFromCacheOrRemote = async (ctx: TelegrafContext): Promise<Either<Failure, MyResult<UserInfo>>> => {
+export const getUserInfoFromCacheOrRemote = async (ctx: TelegrafContext): Promise<Either<Failure, UserInfo>> => {
     const {userId} = ctx.session
     if (userId != undefined) {
-        return Either.right(new MyResult({
+        return Either.right({
             userId
-        }))
+        })
     }
     const fetchUserInfoByTelegramIdResponse = await provider.get<FetchUserByTelegramId>(dependencyKeys.fetchUserByTelegramId)
         .execute(ctx.from!.id.toString())
@@ -122,12 +68,12 @@ export const getUserInfoFromCacheOrRemote = async (ctx: TelegrafContext): Promis
         l => Either.left(l),
         r => {
             const userInfo = {
-                userId: r.value[0].id!,
+                userId: r[0].id!,
             }
 
             ctx.session.userId = userInfo.userId
 
-            return Either.right(new MyResult(userInfo))
+            return Either.right(userInfo)
         }
     )
 }

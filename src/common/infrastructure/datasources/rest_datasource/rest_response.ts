@@ -1,4 +1,4 @@
-import {Right, Failure} from "telegraf-721";
+import {Failure} from "telegraf-721";
 
 class RestResponseError {
     constructor(
@@ -47,11 +47,10 @@ export class OtherRemoteRequestFailure extends RestResponseFailure {
     }
 }
 
-export class RestResponse extends Right {
+export class RestResponse {
     constructor(
         public value: any,
         public statusCode: number
     ) {
-        super();
     }
 }

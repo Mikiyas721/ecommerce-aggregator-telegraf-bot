@@ -1,4 +1,4 @@
-import Entity from "../../../../common/domain/entities/entity";
+import {Entity} from "telegraf-721"
 
 export class Wallet extends Entity {
     private constructor(

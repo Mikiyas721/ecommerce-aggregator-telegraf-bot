@@ -1,5 +1,5 @@
 import {UserRepo} from "../../domain/ports/user_repo";
-import {Either, SimpleFailure, Failure, Success} from "telegraf-721";
+import {Either, SimpleFailure, Failure} from "telegraf-721";
 import {User} from "../../domain/entities/user";
 import {UserRemoteDatasource} from "../datasources/user_remote_datasource";
 import {UserDto} from "../dtos/user_dto";
@@ -8,7 +8,7 @@ export class UserRepoImpl implements UserRepo {
     constructor(private userRemoteDatasource: UserRemoteDatasource) {
     }
 
-    async fetchUserByTelegramId(telegramId: string, fetchAllFields: boolean): Promise<Either<Failure, Success<User[]>>> {
+    async fetchUserByTelegramId(telegramId: string, fetchAllFields: boolean): Promise<Either<Failure, User[]>> {
         const fields = fetchAllFields ? undefined : ["id"]
 
         const usersResponse = await this.userRemoteDatasource.restDatasource.get({
@@ -23,13 +23,13 @@ export class UserRepoImpl implements UserRepo {
 
         return usersResponse.fold(
             l => Either.left(l),
-            r => Either.right(new Success(r.value.map((value: any) => {
+            r => Either.right(r.value.map((value: any) => {
                 return UserDto.fromJson(value).toDomain().getSome()
-            })))
+            }))
         );
     }
 
-    async fetchUserByPhone(phone: string): Promise<Either<Failure, Success<User[]>>> {
+    async fetchUserByPhone(phone: string): Promise<Either<Failure, User[]>> {
         const usersResponse = await this.userRemoteDatasource.restDatasource.get({
             url: this.userRemoteDatasource.myPath,
             params: {
@@ -41,9 +41,9 @@ export class UserRepoImpl implements UserRepo {
 
         return usersResponse.fold(
             l => Either.left(l),
-            r => Either.right(new Success(r.value.map((value: any) => {
+            r => Either.right(r.value.map((value: any) => {
                 return UserDto.fromJson(value).toDomain().getSome()
-            })))
+            }))
         );
     }
 

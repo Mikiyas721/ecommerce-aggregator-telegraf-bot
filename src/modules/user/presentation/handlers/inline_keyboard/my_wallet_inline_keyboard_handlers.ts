@@ -45,7 +45,7 @@ export class MyWalletInlineKeyboardHandlers {
             await ctx.replyWithHTML(l.messageLocaleKey)
             return ctx.answerCbQuery()
         }, async _ => {
-            await ctx.deleteMessage(waitMessage.getRight()?.value.message_id)
+            await ctx.deleteMessage(waitMessage.getRight()?.message_id)
             await ctx.deleteMessage()
             await ctx.replyWithHTML(ctx.i18n.t("user.msg.info.withdrawSuccess"))
             return ctx.scene.enter(sceneKeys.mainMenu)

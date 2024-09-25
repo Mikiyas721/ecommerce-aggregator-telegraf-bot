@@ -1,6 +1,5 @@
-import Entity from "../../../../common/domain/entities/entity";
 import {PhoneNumber} from "../value_objects/phoneNumber";
-import {Option} from "telegraf-721";
+import {Option, Entity} from "telegraf-721";
 import {Name} from "../value_objects/name";
 
 export class User extends Entity {

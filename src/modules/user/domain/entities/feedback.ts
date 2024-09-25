@@ -1,5 +1,4 @@
-import Entity from "../../../../common/domain/entities/entity";
-import {Option} from "telegraf-721";
+import {Option, Entity} from "telegraf-721";
 import {FeedbackBody} from "../value_objects/feedback_body";
 
 export class Feedback extends Entity {

@@ -17,8 +17,8 @@ export class CommonCommandHandlers {
                 ?.split("-")
             const action = dataSplit?.at(0)
             const id = dataSplit?.at(1)
-            if (r.value.length) {
-                ctx.session.userId = r.value[0].id
+            if (r.length) {
+                ctx.session.userId = r[0].id
                 return CommonCommandHandlers.handleStartCommandAction(ctx, action, id, false)
             } else {
                 if(action == "invite" && !await isChannelMember(ctx)){
@@ -40,9 +40,9 @@ export class CommonCommandHandlers {
         return fetchUserByTelegramIdResponse.fold(async l => {
             await ctx.replyWithHTML(l.messageLocaleKey)
         }, async r => {
-            if (r.value.length) {
+            if (r.length) {
                 return ctx.scene.enter(sceneKeys.feedback, {
-                    userId: r.value[0].id
+                    userId: r[0].id
                 })
             } else {
                 return ctx.scene.enter(sceneKeys.userRegistration, {
@@ -73,7 +73,7 @@ export class CommonCommandHandlers {
                     const createInvitationResponse = await provider.get<CreateInvitation>(dependencyKeys.createInvitation)
                         .execute(Invitation.create(
                             undefined,
-                            r.value[0].id!,
+                            r[0].id!,
                             ctx.session.userId,
                             undefined,
                             await isChannelMember(ctx)

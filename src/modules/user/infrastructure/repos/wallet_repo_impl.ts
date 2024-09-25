@@ -1,6 +1,6 @@
 import {WalletRepo} from "../../domain/ports/wallet_repo";
 import {WalletRemoteDatasource} from "../datasources/wallet_remote_datasource";
-import {Either, Failure, ValuelessSuccess} from "telegraf-721";
+import {Either, Failure} from "telegraf-721";
 import {Wallet} from "../../domain/entities/wallet";
 import {WalletDto} from "../dtos/wallet_dto";
 
@@ -19,7 +19,7 @@ export class WalletRepoImpl implements WalletRepo {
         );
     }
 
-    async withdrawReward(amount: number, telegramId: string): Promise<Either<Failure, ValuelessSuccess>> {
+    async withdrawReward(amount: number, telegramId: string): Promise<Either<Failure, {}>> {
         const withdrawResponse = await this.walletDatasource.restDatasource.post({
             url: `${this.walletDatasource.myPath}/withdraw`,
             data: {
@@ -29,7 +29,7 @@ export class WalletRepoImpl implements WalletRepo {
         });
         return withdrawResponse.fold(
             l => Either.left(l),
-            _ => Either.right(new ValuelessSuccess())
+            _ => Either.right({})
         );
     }
 

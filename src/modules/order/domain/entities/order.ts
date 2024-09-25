@@ -1,9 +1,7 @@
-import Entity from "../../../../common/domain/entities/entity";
 import {DeliveryDate} from "../value_objects/delivery_date";
 import {DeliveryAddress} from "../value_objects/delivery_address";
 import {Note} from "../value_objects/note";
-import {Option} from "telegraf-721";
-import * as console from "node:console";
+import {Option, Entity} from "telegraf-721";
 
 export class Order extends Entity {
     private constructor(

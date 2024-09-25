@@ -2,7 +2,7 @@ import {InvitationRepo} from "../../domain/ports/invitation_repo";
 import {InvitationRemoteDatasource} from "../datasources/invitation_remote_datasource";
 import {Invitation} from "../../domain/entities/invitation";
 import {InvitationDto} from "../dtos/invitation_dto";
-import {Either, Failure, Success} from "telegraf-721";
+import {Either, Failure} from "telegraf-721";
 
 export class InvitationRepoImpl implements InvitationRepo {
     constructor(private remoteDatasource: InvitationRemoteDatasource) {
@@ -19,7 +19,7 @@ export class InvitationRepoImpl implements InvitationRepo {
         )
     }
 
-    async fetchInvitation(inviteeId: string): Promise<Either<Failure, Success<Invitation[]>>> {
+    async fetchInvitation(inviteeId: string): Promise<Either<Failure, Invitation[]>> {
         const invitationResponse = await this.remoteDatasource.restDatasource.get({
             url: this.remoteDatasource.myPath,
             params: {
@@ -30,9 +30,9 @@ export class InvitationRepoImpl implements InvitationRepo {
         });
         return invitationResponse.fold(
             l => Either.left(l),
-            r => Either.right(new Success(
+            r => Either.right(
                 r.value.map((invitation:any) => InvitationDto.fromJson(invitation).toDomain())
-            ))
+            )
         )
     }
 

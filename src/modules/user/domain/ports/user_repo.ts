@@ -1,12 +1,10 @@
-import {Either, Failure, Success} from "telegraf-721";
+import {Either, Failure} from "telegraf-721";
 import {User} from "../entities/user";
 
 export interface UserRepo {
-    fetchUserByTelegramId(telegramId: string, fetchAllFields: boolean)
-        : Promise<Either<Failure, Success<User[]>>>
+    fetchUserByTelegramId(telegramId: string, fetchAllFields: boolean): Promise<Either<Failure, User[]>>
 
-    fetchUserByPhone(phone: string)
-        : Promise<Either<Failure, Success<User[]>>>
+    fetchUserByPhone(phone: string): Promise<Either<Failure, User[]>>
 
     registerUser(user: User): Promise<Either<Failure, User>>
 

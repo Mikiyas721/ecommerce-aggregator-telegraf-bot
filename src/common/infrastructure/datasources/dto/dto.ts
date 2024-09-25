@@ -1,6 +1,4 @@
-import {Either, Option, Failure, ValueObjectCollection} from "telegraf-721";
-import Entity from "../../../domain/entities/entity";
-
+import {Either, Option, Failure, Entity, ValueObjectCollection} from "telegraf-721";
 /**
  * Parent class for Data transfer objects
  * Has toJson and toDomain defined here

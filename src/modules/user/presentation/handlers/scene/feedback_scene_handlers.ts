@@ -1,7 +1,6 @@
 import {FeedbackBody} from "../../../domain/value_objects/feedback_body";
 import {FeedbackHandlers} from "../feedback_handlers";
 import {dependencyKeys} from "../../../../../common/utils/constants";
-import {Markup} from "telegraf";
 import {provider, MyMarkup, TelegrafContext} from "telegraf-721";
 
 export class FeedbackSceneHandlers {

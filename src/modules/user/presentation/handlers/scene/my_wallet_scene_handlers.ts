@@ -12,9 +12,9 @@ export class MyWalletSceneHandlers {
         return fetchUserByTelegramIdResponse.fold(async l => {
             await ctx.replyWithHTML(l.messageLocaleKey)
         }, async user => {
-            ctx.scene.state.userId = user.value[0].id!
+            ctx.scene.state.userId = user[0].id!
             const fetchMyWallet = await provider.get<FetchMyWallet>(dependencyKeys.fetchMyWallet)
-                .execute(user.value[0].id!)
+                .execute(user[0].id!)
             return fetchMyWallet.fold(async l => {
                 await ctx.replyWithHTML(l.messageLocaleKey)
             }, async r => {

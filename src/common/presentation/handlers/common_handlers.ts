@@ -9,8 +9,8 @@ export class CommonHandlers {
         return fetchUserByTelegramIdResponse.fold(async l => {
             await ctx.replyWithHTML(l.messageLocaleKey)
         }, async r => {
-            if (r.value.length) {
-                ctx.session.userId = r.value[0].id
+            if (r.length) {
+                ctx.session.userId = r[0].id
                 return ctx.scene.enter(sceneKeys.mainMenu)
             } else {
                 return ctx.scene.enter(sceneKeys.userRegistration)
